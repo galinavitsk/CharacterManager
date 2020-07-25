@@ -1,0 +1,27 @@
+.sidebar-nav {
+    padding-top: 20px;
+    height: 100%;
+    position: fixed;
+    width: 150px;
+    background: #708F93;
+    box-shadow: 3px 0px 6px #00000029;
+}
+
+    .sidebar-nav ul {
+        margin-left:-1em;
+        list-style-type: none;
+    }
+
+        .sidebar-nav ul li a {
+            display: block;
+            color: #E9E7E1;
+            text-align: left;
+            text-decoration: none;
+            padding-bottom:10px;
+            padding-left: 15px;
+            margin: 5px;
+        }
+
+    .sidebar-nav .nav-item .active {
+        background: #86A4A8;
+    }

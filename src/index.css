@@ -1,0 +1,152 @@
+<!-- General-- >
+html, body {
+  margin:0px;
+    height: 100%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+app {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+.content {
+    margin-left: 150px;
+    padding: 15px;
+}
+
+.card {
+    padding: 10px;
+    margin: 10px;
+    background: #E9E7E1;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #E4BDB4;
+}
+
+.e-dialog .e-dlg-content {
+    padding: 10px;
+    background: #E9E7E1;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #E4BDB4;
+}
+
+.input-form {
+    width: 100%;
+}
+
+    .input-form .e-input-group {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        background: #EDEBE7;
+        border: 1px solid #EAA69A;
+        color: #708F93;
+        font-size: 16px;
+    }
+
+.calc-item {
+    text-align: center;
+    background: #EDEBE7;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    width: 100%;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item:hover {
+        cursor: pointer;
+        background: #ebe5d5;
+    }
+
+.calc-item-2 {
+    width: 100%;
+    text-align: center;
+    background: #E7D5CB;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item-2:hover {
+        cursor: pointer;
+        background: #e6ccbd;
+    }
+
+.calc-item-health {
+    text-align: center;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    background: #BAE6BC;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item-health:hover {
+        cursor: pointer;
+        background: #9DBE9E;
+    }
+.calc-item-damage {
+    text-align: center;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    background: #D6A2B6;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item-damage:hover {
+        cursor: pointer;
+        background: #d890ac;
+    }
+
+.icon {
+    color: #708F93;
+}
+.icon:hover {
+    cursor: pointer;
+    color: #EAA69A;
+    fill: #EAA69A;
+}
+
+
+
+
+
+
+
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
