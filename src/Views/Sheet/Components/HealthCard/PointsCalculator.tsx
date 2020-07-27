@@ -57,6 +57,25 @@ props.onPToggle();
 }
 }
 
+const Damage=()=>{
+  var changeAmount:number=parseInt(Equal(points));
+  var temp:number=changeAmount;
+  if(props.tempHealth>0){
+    if(props.tempHealth<changeAmount){
+      temp=changeAmount-props.tempHealth;
+      props.updateTempHealth(0);
+    }
+    else{
+      props.updateTempHealth(props.tempHealth-changeAmount);
+      temp=0;
+    }
+  }
+  props.updateCurrentHealth(props.currentHealth-temp);
+  
+
+props.onPToggle();
+}
+
 
     return ( 
         <div className="container">
@@ -158,7 +177,7 @@ props.onPToggle();
                 <div className="col-4 calc-item-health" onClick={()=>{Temp()}}>
                     Temp
                 </div>
-                <div className="col-4 calc-item-damage">
+                <div className="col-4 calc-item-damage" onClick={()=>{Damage()}}>
                     Damage
                 </div>
             </div>
