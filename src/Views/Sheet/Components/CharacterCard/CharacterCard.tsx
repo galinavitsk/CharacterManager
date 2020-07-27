@@ -1,6 +1,7 @@
 import React from "react";
 import {Character} from '../../../../Data/Character';
 import { connect } from "react-redux";
+import './CharacterCard.css'
 
 export interface CharacterCardProps {
     Naomi:Character;
@@ -22,18 +23,19 @@ export interface CharacterCardState {
   const CCard = (props: { name: React.ReactNode; subrace: React.ReactNode; race: React.ReactNode; classes: any[]; currentHealth: React.ReactNode; }) => (
     <div className="card">
         <div className="row">
-            <div className="col-md-5 col-sm-12">
-                <img style={{border:"1px solid #00000029"}} width="150" height="150" src='../../../../Resources/Letter 2.jpg' />
+            <div id="characterAvatar">
+                <img style={{border:"1px solid #00000029"}} width="100" height="100" src='../../../../Resources/Letter 2.jpg' />
             </div>
-            <div className="col-md-7 col-sm-12">
+            <div id="characterInformation">
     
-                <p style={{fontWeight:"bold", fontSize:"20px", color:"#708F93"}}> {props.name} <span style={{fontSize:"16px",fontWeight:"normal", float:"right"}}>{props.subrace} {props.race} </span></p>
+                <div id="characterName"> {props.name} </div>
+                <div id="characterRace">{props.subrace} {props.race} </div>
                 {props.classes.length <= 0 &&
-                <p style={{fontSize:"16px",color:"#708F93"}}>No Class Selected</p>
+                <div className="characterClass">No Class Selected</div>
                 }
                 {props.classes.length>=0 && 
                 props.classes.map((c)=>
-                <p style={{fontSize:"16px",color:"#708F93", marginBottom:"-.2em"}}>{c.classLevel} {c.subclass} {c.className}</p>)
+                <div className="characterClass">{c.classLevel} {c.subclass} {c.className}</div>)
                 }
             </div>
         </div>

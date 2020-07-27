@@ -1,35 +1,48 @@
 import * as React from 'react';
 import { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import './topnav.css';
+import { connect } from 'react-redux';
+import { UpdateCurrentHitDice } from '../../redux/actionCreators';
  
-class TopNavBar  extends React.Component {
-    render() { 
+const mapStateToProps = state => {
+    return {
+        classes:state.classes
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => ({
+    updateCurrentHitDice: (iD,payload) => dispatch(UpdateCurrentHitDice(iD,payload))
+  })
+
+const TopNavBar  =props=> {
+    const ResetHitDice=()=>{
+        {props.classes.length>=0 && 
+            props.classes.map((c)=>
+            props.updateCurrentHitDice(c.iD,c.classLevel))
+            }
+    }
+   
         return ( 
-        <div className="navbar navbar-default fixed-top top-nav sticky-top">
+        <div className="navbar navbar-default fixed-top top-nav">
             
                  <div className="col-sm" style={{marginTop:"auto",marginBottom:"auto"}}>
             <h1>Character Manager</h1>
                     </div>
         <div className="col-sm" style={{marginTop:"auto",marginBottom:"auto"}} >
-            <ul>
-    
+            <ul id="topnav">
                 <li>
-                    <a href="">
-                    <i className="fa fa-upload" aria-hidden="true"></i>
-                    <FontAwesomeIcon icon={faUpload} /> Save Character</a>
-                </li>
-                <li>
-                    <a href="" >
-                        
-                    <FontAwesomeIcon icon={faDownload} /> Load Character</a>
+                    <a href="" target="_self"> Rest</a>
+                    <ul>
+                <li><a href="#" target="_self" >Long Rest</a></li>
+                <li><a href="#" target="_self" >Short Rest</a></li>
+                <li><a href="#" target="_self" >Reset Hit Points</a></li>
+                <li><a onClick={()=>ResetHitDice()}>Reset Hit Dice</a></li>
+                <li><a href="#" target="_self" >Reset Spell Slots</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>       
     </div> );
-    }
 }
  
-export default TopNavBar ;
+export default connect(mapStateToProps,mapDispatchToProps) (TopNavBar) ;

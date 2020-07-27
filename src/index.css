@@ -1,5 +1,6 @@
 <!-- General-- >
 html, body {
+    
   margin:0px;
     height: 100%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -12,12 +13,10 @@ app {
     flex-direction: column;
 }
 
-
-
-
 .content {
+    padding-left:15px;
     margin-left: 150px;
-    padding: 15px;
+    width:100%;
 }
 
 .card {

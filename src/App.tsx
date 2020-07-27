@@ -6,49 +6,40 @@ import Sheet from './Views/Sheet/index'
 import Spells from './Views/Spells/index'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import {Character} from './Data/Character';
-import store from "./store"
+import { connect } from 'react-redux';
+import { UpdateCurrentHitDice } from './redux/actionCreators';
 
- 
-const Naomi:Character={
-    name:"Naomi",
-    race:"Assimar",
-    subrace:"Scourged",
-    classes: [{className:"Rogue",subclass:"Arcane Trickster", classLevel:4,hitDie:8,currentHDie:2},
-    {className:"Rogue",subclass:"Arcane Trickster", classLevel:20,hitDie:8,currentHDie:5}],
-    abilityScores:{["Strength"]:20,["Dexterity"]:20,["Constitution"]:20,["Intelligence"]:20,["Wisdom"]:20,["Charisma"]:20},
-    maxHealth:120,
-    currentHealth:100,
-    tempHealth:10
+const mapStateToProps = state => {
+  return {
+    currentHealth:state.currentHealth,
+    maxHealth:state.maxHealth,
+    classes:state.classes,
+    tempHealth:state.tempHealth
+  };
 };
 
+const mapDispatchToProps = dispatch => ({
+  updateCurrentHitDice: (iD,payload) => dispatch(UpdateCurrentHitDice(iD,payload))
+})
 
+const App =(props)=>{
 
-
-class App extends Component {
-    constructor(props: Readonly<{}>) {
-        super(props);
-        this.state = {
-          characterData: Naomi
-        };
-      }
-
-  render() {
     return (
   <div>
     <TopNavBar/>
-    <div className="row">
+    <div className="row" style={{marginTop:"70px",width:"100%"}}>
         <Router>
         <SideBar />
        <div className="content">
        <Switch>
           <Route path="/sheet">
-            <Sheet Naomi={Naomi}/>
+            <Sheet />
           </Route>
           <Route path="/spells">
             <Spells />
           </Route>
           <Route path="/">
-            <Sheet Naomi={Naomi}/>
+            <Sheet />
           </Route>
         </Switch>
        </div>
@@ -58,5 +49,4 @@ class App extends Component {
   </div>
     );
   }
-}
-export default App;
+  export default connect(mapStateToProps,mapDispatchToProps) (App);

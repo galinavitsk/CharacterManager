@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Component } from 'react';
 import './sidebar.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 export interface SideBarProps {
     
@@ -29,6 +33,18 @@ class SideBar extends React.Component<SideBarProps, SideBarState> {
             <li className="nav-item">
             <Link to="/">Lore</Link>
             </li>
+        </ul>
+        <ul style={{marginTop:"auto",marginBottom:"50px"}}>
+
+        <li>
+                    <a href="">
+                    <FontAwesomeIcon icon={faUpload} /> Save Character</a>
+                </li>
+                <li>
+                    <a href="" >
+                        
+                    <FontAwesomeIcon icon={faDownload} /> Load Character</a>
+                </li>
         </ul>
         </div>
         );

@@ -1,4 +1,7 @@
 .sidebar-nav {
+    margin-top:-20px;
+    display:flex;
+    flex-direction: column;
     padding-top: 20px;
     height: 100%;
     position: fixed;
