@@ -18,8 +18,8 @@ class Sheet extends React.Component<SheetProps, SheetState> {
         return (
             <div className="row" style={{margin:"0px"}}>
             <div className="col-6" style={{margin:"0px",padding:"0px"}}>
-        <CharacterCard Naomi={this.props.Naomi}/>
-        <HealthCard Naomi={this.props.Naomi}/>
+        <CharacterCard/>
+        <HealthCard/>
         </div>
         <div className="col-3" style={{margin:"0px",padding:"0px"}}>
         <h1>Hello world</h1>

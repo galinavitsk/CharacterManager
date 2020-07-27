@@ -6,7 +6,8 @@ import Sheet from './Views/Sheet/index'
 import Spells from './Views/Spells/index'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import {Character} from './Data/Character';
-import {Class} from './Data/Class'
+import store from "./store"
+
  
 const Naomi:Character={
     name:"Naomi",
@@ -19,6 +20,9 @@ const Naomi:Character={
     currentHealth:100,
     tempHealth:10
 };
+
+
+
 
 class App extends Component {
     constructor(props: Readonly<{}>) {

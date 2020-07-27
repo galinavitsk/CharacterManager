@@ -1,0 +1,52 @@
+.calc-item {
+    text-align: center;
+    background: #EDEBE7;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    width: 100%;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item:hover {
+        cursor: pointer;
+        background: #ebe5d5;
+    }
+
+.calc-item-2 {
+    width: 100%;
+    text-align: center;
+    background: #E7D5CB;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item-2:hover {
+        cursor: pointer;
+        background: #e6ccbd;
+    }
+
+.calc-item-health {
+    text-align: center;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    background: #BAE6BC;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item-health:hover {
+        cursor: pointer;
+        background: #9DBE9E;
+    }
+.calc-item-damage {
+    text-align: center;
+    padding: 3px;
+    font-size: 16px;
+    color: #708F93;
+    background: #D6A2B6;
+    border: 1px solid #E9E7E1;
+}
+    .calc-item-damage:hover {
+        cursor: pointer;
+        background: #d890ac;
+    }
