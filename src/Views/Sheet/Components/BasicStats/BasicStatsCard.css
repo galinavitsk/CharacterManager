@@ -1,0 +1,20 @@
+.BasicStat{
+    color:#708F93;
+    font-size:12px;
+
+}
+.BasicStat #ArmorClass .basicStatMod,
+.BasicStat #Initiative .basicStatMod
+{
+    position:absolute;
+}
+.a{
+    fill:#e7d5cb;
+    stroke:#eaa69a;
+    stroke-width:3px;
+}
+.b{
+    stroke:none;
+    fill:#708F93;
+    font-size:28px;
+}

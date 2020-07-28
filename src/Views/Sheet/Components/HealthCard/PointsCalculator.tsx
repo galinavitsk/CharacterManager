@@ -3,7 +3,7 @@ import { Component, useState } from 'react';
 import { faBackspace, faDivide,faTimes, faEquals, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'react-bootstrap/Form'
-import Equal from '../../../Components/SolveDiceEqualtion'
+import Equal from '../../../../scripts/SolveDiceEqualtion'
 import './Calc.css'
 import { connect } from "react-redux";
 import { UpdateCurrentHealth, UpdateTempHealth } from '../../../../redux/actionCreators';

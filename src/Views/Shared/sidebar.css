@@ -28,3 +28,16 @@
     .sidebar-nav .nav-item .active {
         background: #86A4A8;
     }
+    .sidebarlink{
+        display: block;
+            color: #E9E7E1;
+            text-align: left;
+            text-decoration: none;
+            padding-bottom:10px;
+            padding-left: 15px;
+            margin: 5px;
+    }
+    .sidebarlink:hover{
+        cursor: pointer;
+        color: #EAA69A;
+    }

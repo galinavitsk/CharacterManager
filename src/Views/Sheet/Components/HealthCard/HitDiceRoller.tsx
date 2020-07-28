@@ -3,9 +3,9 @@ import { Component, useState } from 'react';
 import { faDiceD20, faCheck} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Form from 'react-bootstrap/Form';
-import Equal from '../../../Components/SolveDiceEqualtion';
+import Equal from '../../../../scripts/SolveDiceEqualtion';
 import './Calc.css';
-import GetAbilityMod from "../../../Components/GetAbilityMod";
+import GetAbilityMod from "../../../../scripts/GetAbilityMod";
 import { connect } from "react-redux";
 import { UpdateCurrentHealth, UpdateCurrentHitDice } from '../../../../redux/actionCreators';
 
