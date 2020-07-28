@@ -5,6 +5,8 @@ import {Character} from '../../Data/Character';
 import HealthCard from './Components/HealthCard/HealthCard';
 import SkillsScoresCard from './Components/SkillsScoresCard';
 import BasicStatsCard from './Components/BasicStats/BasicStatsCard';
+import FeaturesTrait from './Components/FeaturesTraitsCard/FeaturesTrait'
+import Conditions from './Components/ConditionsCard/Conditions';
 export interface SheetProps {
 }
  
@@ -23,6 +25,8 @@ class Sheet extends React.Component<SheetProps, SheetState> {
         <CharacterCard/>
         <HealthCard/>
         <BasicStatsCard/>
+        <FeaturesTrait/>
+        <Conditions/>
         </div>
         <div className="col-3" style={{margin:"0px",padding:"0px"}}>
         <SkillsScoresCard/>

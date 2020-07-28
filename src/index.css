@@ -75,3 +75,11 @@ app {
     color: #708F93;
     font-size:14px;
 }
+.StatCubesmall{
+    padding:5px;
+    background-color: #EDEBE7;
+    border: solid 2px #E9E7E1;
+
+    color: #708F93;
+    font-size:12px;
+}

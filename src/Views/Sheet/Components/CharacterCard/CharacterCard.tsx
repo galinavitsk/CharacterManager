@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import './CharacterCard.css'
 import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
 
- const mapStateToProps = (state:) => {
+ const mapStateToProps = (state) => {
     return {
       name: state.name,
       race: state.race.name,
@@ -30,7 +30,7 @@ import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
                 }
                 {props.classes.length>0 && 
                 props.classes.map((c)=>
-                <div className="characterClass">{c.classLevel} {c.subclass} {c.className}</div>)
+                <div className="characterClass">{c.classLevel} {c.subclass.subclassName} {c.className}</div>)
                 }
             </div>
         </div>

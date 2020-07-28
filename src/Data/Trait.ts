@@ -1,6 +1,6 @@
 import {Modifier} from './Modifier';
 
-export interface RaceTrait {
+export interface Trait {
     name:string;
     description:string;
     proficiencies:string;

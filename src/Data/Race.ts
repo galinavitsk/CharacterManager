@@ -1,4 +1,4 @@
-import {RaceTrait} from './RaceTrait';
+import {Trait} from './Trait';
 
 export interface Race {
     //Score Imporvements
@@ -11,5 +11,5 @@ export interface Race {
     Charisma:number;
     size:string;
     speed:number;
-    Traits:RaceTrait[];
+    Traits:Trait[];
 }

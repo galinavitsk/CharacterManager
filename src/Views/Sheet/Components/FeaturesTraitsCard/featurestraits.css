@@ -1,0 +1,9 @@
+.featureHeader{
+    color:#708F93;
+    font-size:16px;
+}
+.featureHeader:hover{
+    cursor: pointer;
+    color: #EAA69A;
+    fill: #EAA69A;
+}
