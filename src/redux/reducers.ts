@@ -1,11 +1,15 @@
 import { Character } from "../Data/Character";
 import { Race } from "../Data/Race";
 import * as types from "./types";
+import { Guid } from "guid-typescript";
 // Initial (starting) state
 
 export const Naomi: Character = {
+
+	id: Guid.create(),
 	name: "Naomi",
 	race: {
+		id: Guid.create(),
 		name: "Fallen Aassimar",
 		Strength: 0,
 		Dexterity: 0,
@@ -17,92 +21,126 @@ export const Naomi: Character = {
 		speed: 30,
 		Traits: [
 			{
+				id: Guid.create(),
 				name: "Darkvision",
 				description: "You are able to see in the dark",
 				proficiencies: null,
 				modifiers: null,
 				specialTraits: null,
+				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					
 			},
 			{
+				id: Guid.create(),
 				name: "Healing Hands",
 				description:
 					"Whatever Healing hands do. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 				proficiencies: null,
 				modifiers: null,
 				specialTraits: null,
+				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					
 			},
 		],
 	},
 	classes: [
 		{
-			iD: 0,
+			id: Guid.create(),
 			className: "Rogue",
-      subclass: {
-        subclassName:"Arcane Trickster", 
-      traits:[{
-        name: "Test Subclass Trait 1",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        proficiencies: null,
-        modifiers: null,
-        specialTraits: null,
-      }]},
+			subclass: {
+				id: Guid.create(),
+				subclassName: "Arcane Trickster",
+				traits: [
+					{
+						id: Guid.create(),
+						name: "Test Subclass Trait 1",
+						description:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+						proficiencies: null,
+						modifiers: null,
+						specialTraits: null,
+						smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					},
+				],
+			},
 			classLevel: 4,
 			hitDie: 8,
 			currentHDie: 2,
 			traits: [
 				{
+					id: Guid.create(),
 					name: "Test Class Trait",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 					proficiencies: null,
 					modifiers: null,
 					specialTraits: null,
+					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
 				},
 				{
+					id: Guid.create(),
 					name: "Test Class Trait 01",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 					proficiencies: null,
 					modifiers: null,
 					specialTraits: null,
+					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
 				},
-			]
+			],
 		},
 		{
-			iD: 1,
+			id: Guid.create(),
 			className: "Rogue",
-      subclass: {
-        subclassName:"Arcane Trickster", 
-      traits:[{
-        name: "Test Subclass Trait 11",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        proficiencies: null,
-        modifiers: null,
-        specialTraits: null,
-      }]},
+			subclass: {
+				id: Guid.create(),
+				subclassName: "Arcane Trickster",
+				traits: [
+					{
+						id: Guid.create(),
+						name: "Test Subclass Trait 11",
+						description:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+						proficiencies: null,
+						modifiers: null,
+						specialTraits: null,
+						smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					},
+				],
+			},
 			classLevel: 20,
 			hitDie: 8,
-      currentHDie: 5,
-      traits: [
+			currentHDie: 5,
+			traits: [
 				{
+					id: Guid.create(),
 					name: "Test Class Trait 11",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 					proficiencies: null,
 					modifiers: null,
 					specialTraits: null,
+					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
 				},
 				{
+					id: Guid.create(),
 					name: "Test Class Trait 12",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 					proficiencies: null,
 					modifiers: null,
 					specialTraits: null,
+					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
 				},
-			]
+			],
 		},
 	],
 	abilityScores: {
@@ -117,50 +155,75 @@ export const Naomi: Character = {
 	maxHealth: 120,
 	currentHealth: 100,
 	tempHealth: 10,
-  inspiration: 0,
-  traits: [
-    {
-      name: "Test General Trait 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      proficiencies: null,
-      modifiers: null,
-      specialTraits: null,
-    },
-    {
-      name: "Test General Trait 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      proficiencies: null,
-      modifiers: null,
-      specialTraits: null,
-    },
-  ],
-  background:{name:"Aclolyte",
-  traits: [
-    {
-      name: "Test Background Trait 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      proficiencies: null,
-      modifiers: null,
-      specialTraits: null,
-    },
-    {
-      name: "Test Background Trait 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      proficiencies: null,
-      modifiers: null,
-      specialTraits: null,
-    },
-  ] },
-  conditions:[{
-    name:"blind",
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-  }],
-  exhaustion:1,
+	inspiration: 0,
+	traits: [
+		{
+			id: Guid.create(),
+			name: "Test General Trait 1",
+			description:
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			proficiencies: null,
+			modifiers: null,
+			specialTraits: null,
+			smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+		},
+		{
+			id: Guid.create(),
+			name: "Test General Trait 2",
+			description:
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			proficiencies:
+				"Strength Saving Throw, Dexterity Saving Throw, Acrobatics",
+			modifiers: [
+				{
+					id: Guid.create(),
+					name: "Bonus:Proficiency",
+					category: "Bonus",
+					type: "Proficiency Bonus",
+					value: "4",
+				},
+			],
+			specialTraits: null,
+			smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+		},
+	],
+	background: {id:Guid.create(),
+		name: "Aclolyte",
+		traits: [
+			{id:Guid.create(),
+				name: "Test Background Trait 1",
+				description:
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+				proficiencies: null,
+				modifiers: null,
+				specialTraits: null,
+				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+			},
+			{id:Guid.create(),
+				name: "Test Background Trait 2",
+				description:
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+				proficiencies: null,
+				modifiers: null,
+				specialTraits: null,
+				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+			},
+		],
+	},
+	conditions: [
+		{id:Guid.create(),
+			name: "blind",
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+		},
+	],
+	exhaustion: 1,
+
+    smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
+    smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
 };
 
 // Our root reducer starts with the initial state
@@ -175,11 +238,11 @@ export const rootReducer = (state = Naomi, action) => {
 			return {
 				...state,
 				classes: state.classes.map((data) => {
-					if (data.iD != action.iD) {
+					if (data.id != action.id) {
 						return data;
 					} else {
 						return {
-							iD: data.iD,
+							id: data.id,
 							className: data.className,
 							subclass: data.subclass,
 							classLevel: data.classLevel,
@@ -189,6 +252,11 @@ export const rootReducer = (state = Naomi, action) => {
 					}
 				}),
 			};
+		case types.UPDATE_TRAIT:
+			return{
+				...state,
+
+			}
 
 		default:
 			return state;

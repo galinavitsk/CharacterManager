@@ -96,6 +96,7 @@
     "bluebird": "^3.7.2",
     "bootstrap": "^4.5.0",
     "electron-squirrel-startup": "^1.0.0",
+    "guid-typescript": "^1.0.9",
     "mathjs": "^7.1.0",
     "nedb": "^1.8.0",
     "nedb-promises": "^4.0.4",

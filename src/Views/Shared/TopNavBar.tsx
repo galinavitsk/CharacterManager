@@ -11,14 +11,14 @@ const mapStateToProps = state => {
   };
   
   const mapDispatchToProps = dispatch => ({
-    updateCurrentHitDice: (iD,payload) => dispatch(UpdateCurrentHitDice(iD,payload))
+    updateCurrentHitDice: (id,payload) => dispatch(UpdateCurrentHitDice(id,payload))
   })
 
 const TopNavBar  =props=> {
     const ResetHitDice=()=>{
         {props.classes.length>=0 && 
-            props.classes.map((c)=>
-            props.updateCurrentHitDice(c.iD,c.classLevel))
+            props.classes.map((c)=>{
+            props.updateCurrentHitDice(c.id,c.classLevel)})
             }
     }
    
