@@ -42,7 +42,7 @@ const BasicStatsCard = (props) => {
             height="50px">
               <g id="Layer_2" data-name="Layer 2"><g id="Capa_1" data-name="Capa 1">
                 <path className="a" d="M78.23,4.32C75.47,2.62,53.49.5,41.17.5S6.87,2.62,4.11,4.32.5,7.08.5,10.69V65.91a36,36,0,0,0,1.06,6.37C3.26,77.38,12.18,88,24.29,97.34s15.07,10.41,16.88,10.41S46,106.68,58.05,97.34s21-20,22.73-25.06a36,36,0,0,0,1.06-6.37V10.69C81.84,7.08,81,6,78.23,4.32Z"/>
-            <text className="b" transform="translate(10.77 60.36)" style={{fontSize:"45px"}}>{10+props.AC}</text></g></g></svg>
+            <text className="b" transform="translate(10.77 60.36)" style={{fontSize:"45px"}}>{10+props.AC+GetAbilityMod(props.dexterity)}</text></g></g></svg>
 						</div>
 					</div>
 					<div className="col-3">

@@ -17,8 +17,8 @@ export const UpdateTempHealth = (temp:number) => ({
     id:id,
     payload: newHD,
   })
-  export const UpdateTrait = (id:Guid,newTrait:Trait) => ({
-    type: types.UPDATE_TRAIT,
+  export const UpdateCharacterTrait = (id:Guid,newTrait:Trait) => ({
+    type: types.UPDATE_CHARACTER_TRAIT,
     id:id,
     payload: newTrait,
   })

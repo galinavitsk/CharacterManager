@@ -50,3 +50,20 @@
         cursor: pointer;
         background: #d890ac;
     }
+    .calculator{
+        padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+            background: #EDEBE7;
+            border: 1px solid #EAA69A;
+            color: #708F93;
+           
+            margin-bottom:5px;
+        font-size: 16px;
+    }
+    .calculator:focus{
+        background: #f7f4f0;
+            border: 1px solid #EAA69A;
+    }

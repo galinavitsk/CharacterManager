@@ -80,7 +80,8 @@ props.onPToggle();
     return ( 
         <div className="container">
             <div className="row">
-            <Form.Control id="textBox" 
+            <Form.Control id="textBox"
+            bsPrefix="calculator" 
             type="text" 
             value={points}
             placeholder="enter damage/healing"

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
 import "./featurestraits.css";
-import ClassFeatures from "./ClassFeatures";
+import ClassFeatures from "./Features/ClassFeatures";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faChevronDown,
@@ -12,9 +12,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/esm/Modal";
 import TraitModal from "./TraitModal";
+import OtherFeatures from "./Features/OtherFeatures";
+import BackgroundFeatures from "./Features/BackgroundFeatures";
+import RaceFeatures from "./Features/RaceFeatures";
+import { trueDependencies, bellNumbersDependencies } from "mathjs";
 
 const mapStateToProps = (state) => {
 	return {
+		race:state.race,
 		classes: state.classes,
 		background: state.background,
 		traits: state.traits,
@@ -30,14 +35,17 @@ const FeaturesTrait = (props) => {
 	const [showFeatures, setShowFeatures] = React.useState(false);
 
 	const [showBackgroundFeatures, setShowBackgroundFeatures] = React.useState(
-		false
+		true
 	);
-	const [showOtherFeatures, setShowOtherFeatures] = React.useState(false);
+	const [showRaceFeatures, setShowRaceFeatures] = React.useState(
+		true
+	);
+	const [showOtherFeatures, setShowOtherFeatures] = React.useState(true);
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [trait, setTrait] = React.useState(null);
 
 	const [type, setType]=React.useState(null);
-	const openTraitModal=(t)=>{
+	const openTraitModal=(t,type)=>{
 		setType(type);
 		setTrait(t);
 		setIsOpen(true);
@@ -52,79 +60,101 @@ const FeaturesTrait = (props) => {
 					onClick={() => {
 						setShowFeatures(!showFeatures);
 					}}
-				>
-					Features and Traits{" "}
+				><div className="col-10">
+					Features and Traits</div>
+					<div className="col-2"  style={{float:"right", textAlign:"right"}}>
 					<div className="icon">
 						{showFeatures ? (
 							<FontAwesomeIcon icon={faChevronDown} />
 						) : (
 							<FontAwesomeIcon icon={faChevronLeft} />
-						)}
+						)}</div>
 					</div>
 				</div>
-				<hr></hr>
+				<hr/>
 				{showFeatures ? (
 					<>
+<div
+							className="row featureHeader"
+							onClick={() => {
+								setShowRaceFeatures(!showRaceFeatures);
+							}}
+						><div className="col-10">
+							Race: {props.race.name}</div>
+							<div className="col-2"  style={{float:"right", textAlign:"right"}}>
+							<div className="icon">
+								{showRaceFeatures ? (
+									<FontAwesomeIcon icon={faChevronDown} />
+								) : (
+									<FontAwesomeIcon icon={faChevronLeft} />
+								)}
+								</div>
+							</div>
+						</div>
+						{showRaceFeatures
+							? props.race.traits.map((r) => (
+									<>
+									<RaceFeatures trait={r}/>
+									</>
+							  ))
+							: null}
+
+
+<hr></hr>
 						{props.classes.length >= 1 &&
 							props.classes.map((c) => <ClassFeatures c={c} />)}
-						<hr />
+						
+						
+
+
 						<div
 							className="row featureHeader"
-							style={{ paddingLeft: "10px" }}
 							onClick={() => {
 								setShowBackgroundFeatures(!showBackgroundFeatures);
 							}}
-						>
-							Background: {props.background.name}
+						><div className="col-10">
+							Background: {props.background.name}</div>
+							<div className="col-2"  style={{float:"right", textAlign:"right"}}>
 							<div className="icon">
 								{showBackgroundFeatures ? (
 									<FontAwesomeIcon icon={faChevronDown} />
 								) : (
 									<FontAwesomeIcon icon={faChevronLeft} />
 								)}
+								</div>
 							</div>
 						</div>
 						{showBackgroundFeatures
 							? props.background.traits.map((b) => (
 									<>
-										<div className="row" onClick={()=>{openTraitModal(b,"background")}}>
-											<div className="col-3 StatCube">{b.name}</div>
-											<div className="col-9 StatCubesmall">{b.description}</div>
-										</div>
-										<hr />
+									<BackgroundFeatures trait={b}/>
 									</>
 							  ))
 							: null}
 						<hr />
-						<hr />
 						<div
 							className="row featureHeader"
-							style={{ paddingLeft: "10px" }}
 							onClick={() => {
 								setShowOtherFeatures(!showOtherFeatures);
 							}}
 						>
-							Other(Feats, Features, Traits)
+							<div className="col-10">
+							Other(Feats, Features, Traits)</div>
+							<div className="col-2"  style={{float:"right", textAlign:"right"}}>
 							<div className="icon">
 								{showOtherFeatures ? (
 									<FontAwesomeIcon icon={faChevronDown} />
 								) : (
 									<FontAwesomeIcon icon={faChevronLeft} />
 								)}
+								</div>
 							</div>
 						</div>
 						{showOtherFeatures
 							? props.traits.map((t) => (
-									<>
-										<div className="row" onClick={()=>{openTraitModal(t,"other")}}>
-											<div className="col-3 StatCube">{t.name}</div>
-											<div className="col-9 StatCubesmall">{t.description}</div>
-										</div>
-										<hr />
-									</>
+									<OtherFeatures trait={t}/>
 							  ))
 							: null}
-						<hr />
 						<hr />
 					</>
 				) : null}

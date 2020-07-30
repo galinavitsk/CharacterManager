@@ -13,5 +13,5 @@ export interface Race {
     Charisma:number;
     size:string;
     speed:number;
-    Traits:Trait[];
+    traits:Trait[];
 }

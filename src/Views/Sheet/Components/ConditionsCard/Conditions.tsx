@@ -33,15 +33,16 @@ const Conditions = (props) => {
 					onClick={() => {
 						setShowConditions(!showConditions);
 					}}
-				>
-					Conditions
+				><div className="col-10">
+					Conditions</div>
+					<div className="col-2"  style={{float:"right", textAlign:"right"}}>
 					<div className="icon">
 						{showConditions ? (
 							<FontAwesomeIcon icon={faChevronDown} />
 						) : (
 							<FontAwesomeIcon icon={faChevronLeft} />
 						)}
-					</div>
+					</div></div>
 				</div>
 				<hr></hr>
 				{showConditions ? (
