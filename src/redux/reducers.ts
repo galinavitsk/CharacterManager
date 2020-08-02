@@ -28,7 +28,7 @@ export const Naomi: Character = {
 				modifiers: null,
 				
 				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 					
 			},
 			{
@@ -41,7 +41,7 @@ export const Naomi: Character = {
 				modifiers: null,
 				
 				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 					
 			},
 		],
@@ -63,7 +63,7 @@ export const Naomi: Character = {
 							skillsProf:["Acrobatics"],
 						modifiers: null,
 						smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 					},
 				],
 			},
@@ -82,7 +82,7 @@ export const Naomi: Character = {
 					modifiers: null,
 					
 					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 				},
 				{
 					id: Guid.create(),
@@ -95,7 +95,7 @@ export const Naomi: Character = {
 					modifiers: null,
 					
 					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 				},
 			],
 		},
@@ -116,7 +116,7 @@ export const Naomi: Character = {
 							skillsProf:null,
 						modifiers: null,
 						smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 					},
 				],
 			},
@@ -134,7 +134,7 @@ export const Naomi: Character = {
 						skillsProf:null,
 					modifiers: null,
 					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 				},
 				{
 					id: Guid.create(),
@@ -146,7 +146,7 @@ export const Naomi: Character = {
 						skillsProf:null,
 					modifiers: null,
 					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 				},
 			],
 		},
@@ -181,7 +181,7 @@ export const Naomi: Character = {
 			}],
 			
 			smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 		},
 		{
 			id: Guid.create(),
@@ -202,7 +202,7 @@ export const Naomi: Character = {
 			],
 			
 			smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 		},
 	],
 	background: {id:Guid.create(),
@@ -217,7 +217,7 @@ export const Naomi: Character = {
 				modifiers: null,
 				
 				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 			},
 			{id:Guid.create(),
 				name: "Test Background Trait 2",
@@ -228,7 +228,7 @@ export const Naomi: Character = {
 				modifiers: null,
 				
 				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
 			},
 		],
 	},

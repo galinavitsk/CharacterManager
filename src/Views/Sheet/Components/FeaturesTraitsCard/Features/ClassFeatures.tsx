@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/esm/Modal";
-import TraitModal from "../TraitModal";
+import TraitModal from "../TraitModal/TraitModal";
 import SubclassFeatures from "./SubclassFeatures";
 import { truncateSync } from "fs";
 import SingleClassFeature from "./SingleClassFeature";

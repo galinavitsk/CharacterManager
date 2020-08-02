@@ -11,7 +11,7 @@ import {
 	faCog,
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/esm/Modal";
-import TraitModal from "./TraitModal";
+import TraitModal from "./TraitModal/TraitModal";
 import OtherFeatures from "./Features/OtherFeatures";
 import BackgroundFeatures from "./Features/BackgroundFeatures";
 import RaceFeatures from "./Features/RaceFeatures";
