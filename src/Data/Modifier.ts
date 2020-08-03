@@ -16,7 +16,7 @@ export function GetModifierCategories() {
 		"Skill",
 	];
 }
-export function GetModifierType(category) {
+export function GetModifierType(category:string) {
 	switch (category) {
 		case "Bonus":
             return ["Proficiency Bonus","Weapon Attacks","Weapon Damage","Melee Attacks","Melee Damage"];

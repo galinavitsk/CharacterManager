@@ -15,12 +15,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
-const SmallTools = (props) => {
+const mapDispatchToProps = (dispatch: any) => ({});
+const SmallTools = (props: { t: { name: {}; bonus: React.SetStateAction<string>; attribute: {}; mods: {}; }; handleDeleteTool: (arg0: any) => void; }) => {
 	const [toolName, setToolName] = React.useState("");
 	const [toolBonus, setToolBonus] = React.useState("Proficient");
 	const [toolAttribute, setToolAttribute] = React.useState("Strength");
@@ -28,29 +28,29 @@ const SmallTools = (props) => {
 
 	const [expanded, setExpanded] = React.useState(false);
 	const openToolEdit = () => {
-        setToolName(props.t.name);
+        setToolName(props.t.name.toString());
         setToolBonus(props.t.bonus);
-        setToolAttribute(props.t.attribute);
-        setToolMods(props.t.mods);
+        setToolAttribute(props.t.attribute.toString());
+        setToolMods(parseInt(props.t.mods.toString()));
 		setExpanded(true);
 	};
 	const handleSaveTool = () => {
         props.t.name=toolName;
         props.t.bonus=toolBonus;
         props.t.attribute=toolAttribute;
-        props.t.mods=toolMods;
+        props.t.mods=parseInt(toolMods.toString());
 		setExpanded(false);
 	};
-	const handleNameChange = (e) => {
+	const handleNameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setToolName(e.target.value);
 	};
-	const handleBonusChange = (e) => {
+	const handleBonusChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setToolBonus(e.target.value);
 	};
-	const handleAttributeChange = (e) => {
+	const handleAttributeChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setToolAttribute(e.target.value);
     };
-    const handleModsChange=(e)=>{
+    const handleModsChange=(e: { target: { value: React.SetStateAction<number>; }; })=>{
         setToolMods(e.target.value);
     }
 	return (

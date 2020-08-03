@@ -9,27 +9,29 @@ import {
 	faChevronLeft,
 	faPlus,
 	faCog,
+	faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/esm/Modal";
 import TraitModal from "./TraitModal/TraitModal";
 import OtherFeatures from "./Features/OtherFeatures";
 import BackgroundFeatures from "./Features/BackgroundFeatures";
 import RaceFeatures from "./Features/RaceFeatures";
-import { trueDependencies, bellNumbersDependencies } from "mathjs";
+import {
+	trueDependencies,
+	bellNumbersDependencies,
+	falseDependencies,
+} from "mathjs";
 
 const mapStateToProps = (state) => {
 	return {
-		race:state.race,
+		race: state.race,
 		classes: state.classes,
 		background: state.background,
 		traits: state.traits,
 	};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	updateCurrentHealth: (payload: number) =>
-		dispatch(UpdateCurrentHealth(payload)),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 const FeaturesTrait = (props) => {
 	const [showFeatures, setShowFeatures] = React.useState(false);
@@ -37,19 +39,36 @@ const FeaturesTrait = (props) => {
 	const [showBackgroundFeatures, setShowBackgroundFeatures] = React.useState(
 		true
 	);
-	const [showRaceFeatures, setShowRaceFeatures] = React.useState(
-		true
-	);
+	const [showRaceFeatures, setShowRaceFeatures] = React.useState(true);
 	const [showOtherFeatures, setShowOtherFeatures] = React.useState(true);
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [trait, setTrait] = React.useState(null);
+	const [isEditing, setIsEditing] = React.useState(false);
+	const [isNew, setIsNew] = React.useState(false);
+	const [featureType, setFeatureType] = React.useState("");
 
-	const [type, setType]=React.useState(null);
-	const openTraitModal=(t,type)=>{
-		setType(type);
-		setTrait(t);
-		setIsOpen(true);
-	}
+	const closeTraitModal = () => {
+		setIsOpen(false);
+		setIsEditing(false);
+		setIsNew(false);
+	};
+	const addNewTrait = (newTrait) => {
+		switch (featureType) {
+			case "racial":
+				props.race.traits.push(newTrait);
+				break;
+			case "background":
+				props.background.traits.push(newTrait);
+				break;
+			case "other":
+				props.traits.push(newTrait);
+				break;
+			default:
+				break;
+		}
+		setFeatureType("");
+		closeTraitModal();
+	};
 
 	return (
 		<div className="card">
@@ -60,77 +79,115 @@ const FeaturesTrait = (props) => {
 					onClick={() => {
 						setShowFeatures(!showFeatures);
 					}}
-				><div className="col-10">
-					Features and Traits</div>
-					<div className="col-2"  style={{float:"right", textAlign:"right"}}>
-					<div className="icon">
-						{showFeatures ? (
-							<FontAwesomeIcon icon={faChevronDown} />
-						) : (
-							<FontAwesomeIcon icon={faChevronLeft} />
-						)}</div>
+				>
+					<div className="col-10">Features and Traits</div>
+					<div className="col-2" style={{ float: "right", textAlign: "right" }}>
+						<div className="icon">
+							{showFeatures ? (
+								<FontAwesomeIcon icon={faChevronDown} />
+							) : (
+								<FontAwesomeIcon icon={faChevronLeft} />
+							)}
+						</div>
 					</div>
 				</div>
-				<hr/>
+				<hr />
 				{showFeatures ? (
 					<>
-<div
+						<div
 							className="row featureHeader"
 							onClick={() => {
 								setShowRaceFeatures(!showRaceFeatures);
 							}}
-						><div className="col-10">
-							Race: {props.race.name}</div>
-							<div className="col-2"  style={{float:"right", textAlign:"right"}}>
-							<div className="icon">
-								{showRaceFeatures ? (
-									<FontAwesomeIcon icon={faChevronDown} />
-								) : (
-									<FontAwesomeIcon icon={faChevronLeft} />
-								)}
+						>
+							<div className="col-10">Race: {props.race.name}</div>
+							<div
+								className="col-2"
+								style={{ float: "right", textAlign: "right" }}
+							>
+								<div className="icon">
+									{showRaceFeatures ? (
+										<FontAwesomeIcon icon={faChevronDown} />
+									) : (
+										<FontAwesomeIcon icon={faChevronLeft} />
+									)}
 								</div>
 							</div>
 						</div>
 						{showRaceFeatures
-							? props.race.traits.map((r) => (
-									<>
-									<RaceFeatures trait={r}/>
+							? <>{props.race.traits.map((r) => (
+										<RaceFeatures trait={r} />
+										
+							  ))}
+							  <div
+							className="row icon"
+							style={{ fontSize: "12px", paddingLeft: "20px" }}
+							onClick={() => {
+								setIsEditing(true);
+								setIsNew(true);
+								setFeatureType("racial");
+								setIsOpen(true);
+							}}
+						>
+							<FontAwesomeIcon
+								icon={faPlusCircle}
+								style={{ marginRight: "5px" }}
+							/>
+							Add Racial Feature
+						</div>
 									</>
-							  ))
 							: null}
 
+						
 
-<hr></hr>
+						<hr></hr>
 						{props.classes.length >= 1 &&
 							props.classes.map((c) => <ClassFeatures c={c} />)}
-						
-						
-
 
 						<div
 							className="row featureHeader"
 							onClick={() => {
 								setShowBackgroundFeatures(!showBackgroundFeatures);
 							}}
-						><div className="col-10">
-							Background: {props.background.name}</div>
-							<div className="col-2"  style={{float:"right", textAlign:"right"}}>
-							<div className="icon">
-								{showBackgroundFeatures ? (
-									<FontAwesomeIcon icon={faChevronDown} />
-								) : (
-									<FontAwesomeIcon icon={faChevronLeft} />
-								)}
+						>
+							<div className="col-10">Background: {props.background.name}</div>
+							<div
+								className="col-2"
+								style={{ float: "right", textAlign: "right" }}
+							>
+								<div className="icon">
+									{showBackgroundFeatures ? (
+										<FontAwesomeIcon icon={faChevronDown} />
+									) : (
+										<FontAwesomeIcon icon={faChevronLeft} />
+									)}
 								</div>
 							</div>
 						</div>
 						{showBackgroundFeatures
-							? props.background.traits.map((b) => (
-									<>
-									<BackgroundFeatures trait={b}/>
+							? <>{props.background.traits.map((b) => (
+										<BackgroundFeatures trait={b} />
+										
+							  ))}
+							  <div
+							className="row icon"
+							style={{ fontSize: "12px", paddingLeft: "20px" }}
+							onClick={() => {
+								setIsEditing(true);
+								setIsNew(true);
+								setFeatureType("background");
+								setIsOpen(true);
+							}}
+						>
+							<FontAwesomeIcon
+								icon={faPlusCircle}
+								style={{ marginRight: "5px" }}
+							/>
+							Add Background Feature
+						</div>
 									</>
-							  ))
 							: null}
+							
 						<hr />
 						<div
 							className="row featureHeader"
@@ -138,23 +195,40 @@ const FeaturesTrait = (props) => {
 								setShowOtherFeatures(!showOtherFeatures);
 							}}
 						>
-							<div className="col-10">
-							Other(Feats, Features, Traits)</div>
-							<div className="col-2"  style={{float:"right", textAlign:"right"}}>
-							<div className="icon">
-								{showOtherFeatures ? (
-									<FontAwesomeIcon icon={faChevronDown} />
-								) : (
-									<FontAwesomeIcon icon={faChevronLeft} />
-								)}
+							<div className="col-10">Other(Feats, Features, Traits)</div>
+							<div
+								className="col-2"
+								style={{ float: "right", textAlign: "right" }}
+							>
+								<div className="icon">
+									{showOtherFeatures ? (
+										<FontAwesomeIcon icon={faChevronDown} />
+									) : (
+										<FontAwesomeIcon icon={faChevronLeft} />
+									)}
 								</div>
 							</div>
 						</div>
 						{showOtherFeatures
-							? props.traits.map((t) => (
-									<OtherFeatures trait={t}/>
-							  ))
+							? <>{props.traits.map((t) => <OtherFeatures trait={t} />)}
+							<div
+							className="row icon"
+							style={{ fontSize: "12px", paddingLeft: "20px" }}
+							onClick={() => {
+								setIsEditing(true);
+								setIsNew(true);
+								setFeatureType("other");
+								setIsOpen(true);
+							}}
+						>
+							<FontAwesomeIcon
+								icon={faPlusCircle}
+								style={{ marginRight: "5px" }}
+							/>
+							Add Other Feature
+						</div></>
 							: null}
+							
 						<hr />
 					</>
 				) : null}
@@ -167,7 +241,13 @@ const FeaturesTrait = (props) => {
 				centered
 			>
 				<Modal.Body bsPrefix="modalContentCard">
-					<TraitModal trait={trait} />
+					<TraitModal
+						trait={trait}
+						closeModal={closeTraitModal}
+						editing={isEditing}
+						isNew={isNew}
+						addFeature={addNewTrait}
+					/>
 				</Modal.Body>
 			</Modal>
 		</div>

@@ -16,19 +16,19 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Guid } from "guid-typescript";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (_state: any) => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
-const SmallProficienciesAdd = (props) => {
+const mapDispatchToProps = (_dispatch: any) => ({});
+const SmallProficienciesAdd = (props: { handleSaveProf: (arg0: string, arg1: string) => void; }) => {
 	const [profType, setProfType] = React.useState("Language");
     const [profProf, setProfProf] = React.useState("");
     
-	const handleTypeChange = (e) => {
+	const handleTypeChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setProfType(e.target.value);
 	};
-	const handleProfChange = (e) => {
+	const handleProfChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setProfProf(e.target.value);
     };
     

@@ -15,12 +15,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:any) => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
-const SmallProficiencies = (props) => {
+const mapDispatchToProps = (dispatch:any) => ({});
+const SmallProficiencies = (props:any) => {
 	const [profId, setProfId] = React.useState("");
 	const [profType, setProfType] = React.useState("");
 	const [profProf, setProfProf] = React.useState("");
@@ -31,10 +31,10 @@ const SmallProficiencies = (props) => {
 		setProfProf(props.p.prof);
 		setExpanded(true);
 	};
-	const handleTypeChange = (e) => {
+	const handleTypeChange = (e:any) => {
 		setProfType(e.target.value);
 	};
-	const handleProfChange = (e) => {
+	const handleProfChange = (e:any) => {
 		setProfProf(e.target.value);
     };
     const handleSaveProf=()=>{

@@ -11,23 +11,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/esm/Modal";
 import TraitModal from "../TraitModal/TraitModal";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: any) => ({
 
 });
-const BackgroundFeatures = (props) => {
+const BackgroundFeatures = (props: { trait: { name: {}; description: React.ReactNode; }; }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
     const [trait, setTrait] = React.useState(null);
-    const [expanded,setExpanded]=React.useState(null);
-	const [type, setType] = React.useState(null);
-	const openTraitModal = (t,ty) => {
-		setType(ty);
+	const [expanded,setExpanded]=React.useState(null);
+	
+	const [isEditing, setIsEditing] = React.useState(false);
+	const [isNew, setIsNew] = React.useState(false);
+	const openTraitModal = (t: any) => {
 		setTrait(t);
 		setIsOpen(true);
 	};
+
 	return (
 		<>
 			
@@ -45,7 +47,7 @@ const BackgroundFeatures = (props) => {
            </div></div>
                     <div className="row StatCubesmall">
                     {props.trait.description}<p></p>
-                    <div className="icon"  onClick={()=>{openTraitModal(props.trait,"background")}}>
+                    <div className="icon"  onClick={()=>{openTraitModal(props.trait)}}>
                <FontAwesomeIcon icon={faInfoCircle} /></div> 
                 </div></>
                 ):<div
@@ -66,7 +68,7 @@ const BackgroundFeatures = (props) => {
 				centered
 			>
 				<Modal.Body bsPrefix="modalContentCard">
-					<TraitModal trait={trait} type={type} />
+					<TraitModal trait={trait}/>
 				</Modal.Body>
 			</Modal>
 		</>

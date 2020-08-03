@@ -15,35 +15,35 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
-const SmallToolsAdd = (props) => {
+const mapDispatchToProps = (dispatch: any) => ({});
+const SmallToolsAdd = (props: { handleSaveTool: (arg0: string, arg1: string, arg2: string, arg3: number) => void; }) => {
 	const [toolName, setToolName] = React.useState("");
 	const [toolBonus, setToolBonus] = React.useState("Proficient");
 	const [toolAttribute, setToolAttribute] = React.useState("Strength");
 	const [toolMods, setToolMods] = React.useState(0);
 
 	const handleSaveTool = () => {
-        props.handleSaveTool(toolName,toolBonus,toolAttribute,toolMods);
+        props.handleSaveTool(toolName,toolBonus,toolAttribute,parseInt(toolMods.toString()));
         setToolName(null);
         setToolBonus(null);
         setToolAttribute(null);
         setToolMods(null);
 
 	};
-	const handleNameChange = (e) => {
+	const handleNameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setToolName(e.target.value);
 	};
-	const handleBonusChange = (e) => {
+	const handleBonusChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setToolBonus(e.target.value);
 	};
-	const handleAttributeChange = (e) => {
+	const handleAttributeChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setToolAttribute(e.target.value);
     };
-    const handleModsChange=(e)=>{
+    const handleModsChange=(e: { target: { value: React.SetStateAction<number>; }; })=>{
         setToolMods(e.target.value);
     }
 	return (

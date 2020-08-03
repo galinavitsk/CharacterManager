@@ -246,7 +246,7 @@ export const Naomi: Character = {
 
 // Our root reducer starts with the initial state
 // and must return a representation of the next state
-export const rootReducer = (state = Naomi, action) => {
+export const rootReducer = (state = Naomi, action: { type: any; payload: any; id: Guid; }) => {
 	switch (action.type) {
 		case types.UPDATE_CURRENT_HEALTH:
 			return { ...state, currentHealth: action.payload };

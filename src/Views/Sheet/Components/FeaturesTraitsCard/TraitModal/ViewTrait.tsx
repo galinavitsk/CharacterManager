@@ -11,9 +11,9 @@ import GetProficiency from "../../../../../scripts/GetProficiency";
 
 export interface ViewTraitProps {
 	trait: Trait;
-	onStartEditing;
-	abilityScores;
-	classes;
+	onStartEditing: () => void;
+	abilityScores: { [x: string]: number; };
+	classes: import("../../../../../Data/Class").Class[];
 }
 
 export interface ViewTraitState {}
@@ -78,6 +78,7 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 								<div className="col-3 StatCubesmall">
 									{
 										<>
+										
 											{t.attribute == "Query" && <>?</>}
 											{t.bonus == "Proficient" &&
 												t.attribute != "Query" &&

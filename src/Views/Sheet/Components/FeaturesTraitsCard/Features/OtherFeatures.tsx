@@ -11,18 +11,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/esm/Modal";
 import TraitModal from "../TraitModal/TraitModal";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
-const OtherFeatures = (props) => {
+const mapDispatchToProps = (dispatch: any) => ({});
+const OtherFeatures = (props: { trait: { name: {}; description: React.ReactNode; }; }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [trait, setTrait] = React.useState(null);
 	const [expanded, setExpanded] = React.useState(null);
-	const [type, setType] = React.useState(null);
-	const openTraitModal = (t, ty) => {
-		setType(ty);
+	const openTraitModal = (t: any) => {
 		setTrait(t);
 		setIsOpen(true);
 	};
@@ -53,7 +51,7 @@ const OtherFeatures = (props) => {
 						<div
 							className="icon"
 							onClick={() => {
-								openTraitModal(props.trait, "other");
+								openTraitModal(props.trait);
 							}}
 						>
 							<FontAwesomeIcon icon={faInfoCircle} />
@@ -84,7 +82,7 @@ const OtherFeatures = (props) => {
 				centered
 			>
 				<Modal.Body bsPrefix="modalContentCard">
-					<TraitModal trait={trait} type={type} />
+					<TraitModal trait={trait}/>
 				</Modal.Body>
 			</Modal>
 		</>

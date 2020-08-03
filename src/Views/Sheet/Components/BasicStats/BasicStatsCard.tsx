@@ -1,16 +1,12 @@
 import * as React from "react";
-import { Component, useState } from "react";
-import StatusBar from "../../../Components/StatusBar";
-import Modal from "react-bootstrap/Modal";
 import { connect } from "react-redux";
-import { UpdateCurrentHealth } from "../../../../redux/actionCreators";
 import GetAbilityMod from "../../../../scripts/GetAbilityMod";
 import "./BasicStatsCard.css";
 import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
 
 import GetProficiency from "../../../../scripts/GetProficiency"
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: { abilityScores: { [x: string]: any; }; acbonus: any; race: { speed: any; }; proficiency: any; inspiration: any; classes: any; }) => {
 	return {
 		dexterity: state.abilityScores["Dexterity"],
     wisdom: state.abilityScores["Wisdom"],
@@ -25,11 +21,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (
 	dispatch: (arg0: { type: string; payload: number }) => any
 ) => ({
-	updateCurrentHealth: (payload: number) =>
-		dispatch(UpdateCurrentHealth(payload)),
 });
 
-const BasicStatsCard = (props) => {
+const BasicStatsCard = (props: { AC: number; dexterity: number; speed: React.ReactNode; classes: import("../../../../Data/Class").Class[]; wisdom: number; insp: React.ReactNode; }) => {
 	return (
 		<>
 			<div className="card" style={{ textAlign: "center" }}>

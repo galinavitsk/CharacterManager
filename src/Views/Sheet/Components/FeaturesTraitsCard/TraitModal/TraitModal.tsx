@@ -28,18 +28,17 @@ import SmallProficienciesAdd from "./SmallProficienciesAdd";
 import SmallTools from "./SmallTools";
 import SmallToolsAdd from "./SmallToolsAdd";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: { abilityScores: any; classes: any; }) => {
 	return {
 abilityScores:state.abilityScores,
 classes:state.classes
-
 	};
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch: any) => ({});
 
 const TraitModal = (props) => {
-	const [isEditing, setIsEditing] = React.useState(false);
+	const [isEditing, setIsEditing] = React.useState(props.editing);
 	const [traitName, setTraitName] = React.useState("");
 	const [traitDescription, setTraitDescription] = React.useState("");
 	const [skillsChecked, setSkillsChecked] = React.useState(new Map());
@@ -70,15 +69,15 @@ const TraitModal = (props) => {
 		setTraitName(props.trait.name);
 		setTraitDescription(props.trait.description);
 		if (props.trait.savingThrowsProf != null) {
-			props.trait.savingThrowsProf.map((s) =>
+			props.trait.savingThrowsProf.map((s: any) =>
 				savingThrows.set(`saving-${s}`, true)
 			);
 		}
 		if (props.trait.skillsProf != null) {
-			props.trait.skillsProf.map((skill) => skills.set(`skill-${skill}`, true));
+			props.trait.skillsProf.map((skill: any) => skills.set(`skill-${skill}`, true));
 		}
 		if (props.trait.modifiers != null) {
-			props.trait.modifiers.map((mod) =>
+			props.trait.modifiers.map((mod: { id: any; name: any; category: any; type: any; value: any; }) =>
 				modifiers.push({
 					id: mod.id,
 					name: mod.name,
@@ -89,7 +88,7 @@ const TraitModal = (props) => {
 			);
 		}
 		if (props.trait.smallProf != null) {
-			props.trait.smallProf.map((p) =>
+			props.trait.smallProf.map((p: { id: any; type: any; prof: any; }) =>
 				smallProfs.push({
 					id: p.id,
 					type: p.type,
@@ -98,7 +97,7 @@ const TraitModal = (props) => {
 			);
 		}
 		if (props.trait.smallTools != null) {
-			props.trait.smallTools.map((t) =>
+			props.trait.smallTools.map((t: { id: any; name: any; bonus: any; attribute: any; mods: any; }) =>
 				smallTools.push({
 					id: t.id,
 					name: t.name,
@@ -113,83 +112,102 @@ const TraitModal = (props) => {
 		setIsEditing(true);
 	};
 	const onStopEdit = () => {
+		if(!props.isNew){
 		setIsEditing(false);
 		setModifiers([]);
 		setSmallProfs([]);
-		setSmallTools([]);
+		setSmallTools([]);}
+		else{
+			props.closeModal();
+		}
 	};
 
 	const onSaveTrait = () => {
-		props.trait.name = traitName;
-		props.trait.description = traitDescription;
-		props.trait.savingThrowsProf = [];
-		props.trait.skillsProf=[];
+		var newSavingThrows=[];
+		var newSkills=[];
 		//Set Saving Thows
 		{
 			if (savingThrowsChecked.get(`saving-Strength`) == true) {
-				props.trait.savingThrowsProf.push("Strength");
+				newSavingThrows.push("Strength");
 			}
 			if (savingThrowsChecked.get(`saving-Dexterity`) == true) {
-				props.trait.savingThrowsProf.push("Dexterity");
+				newSavingThrows.push("Dexterity");
 			}
 			if (savingThrowsChecked.get(`saving-Constitution`) == true) {
-				props.trait.savingThrowsProf.push("Constitution");
+				newSavingThrows.push("Constitution");
 			}
 			if (savingThrowsChecked.get(`saving-Intelligence`) == true) {
-				props.trait.savingThrowsProf.push("Intelligence");
+				newSavingThrows.push("Intelligence");
 			}
 			if (savingThrowsChecked.get(`saving-Wisdom`) == true) {
-				props.trait.savingThrowsProf.push("Wisdom");
+				newSavingThrows.push("Wisdom");
 			}
 			if (savingThrowsChecked.get(`saving-Charisma`) == true) {
-				props.trait.savingThrowsProf.push("Charisma");
+				newSavingThrows.push("Charisma");
 			}
 		}
 		//Set Ability Proficiencies
 		{
 			if (skillsChecked.get(`skill-Acrobatics`) == true) {
-				props.trait.skillsProf.push("Acrobatics");
+				newSkills.push("Acrobatics");
 			}if (skillsChecked.get(`skill-Animal Handling`) == true) {
-				props.trait.skillsProf.push("Animal Handling");
+				newSkills.push("Animal Handling");
 			}if (skillsChecked.get(`skill-Arcana`) == true) {
-				props.trait.skillsProf.push("Arcana");
+				newSkills.push("Arcana");
 			}if (skillsChecked.get(`skill-Athetics`) == true) {
-				props.trait.skillsProf.push("Athetics");
+				newSkills.push("Athetics");
 			}if (skillsChecked.get(`skill-Deception`) == true) {
-				props.trait.skillsProf.push("Deception");
+				newSkills.push("Deception");
 			}if (skillsChecked.get(`skill-History`) == true) {
-				props.trait.skillsProf.push("History");
+				newSkills.push("History");
 			}if (skillsChecked.get(`skill-Insight`) == true) {
-				props.trait.skillsProf.push("Insight");
+				newSkills.push("Insight");
 			}if (skillsChecked.get(`skill-Intimidation`) == true) {
-				props.trait.skillsProf.push("Intimidation");
+				newSkills.push("Intimidation");
 			}if (skillsChecked.get(`skill-Medicine`) == true) {
-				props.trait.skillsProf.push("Medicine");
+				newSkills.push("Medicine");
 			}if (skillsChecked.get(`skill-Nature`) == true) {
-				props.trait.skillsProf.push("Nature");
+				newSkills.push("Nature");
 			}if (skillsChecked.get(`skill-Perception`) == true) {
-				props.trait.skillsProf.push("Perception");
+				newSkills.push("Perception");
 			}if (skillsChecked.get(`skill-Performance`) == true) {
-				props.trait.skillsProf.push("Performance");
+				newSkills.push("Performance");
 			}if (skillsChecked.get(`skill-Persuasion`) == true) {
-				props.trait.skillsProf.push("Persuasion");
+				newSkills.push("Persuasion");
 			}if (skillsChecked.get(`skill-Religion`) == true) {
-				props.trait.skillsProf.push("Religion");
+				newSkills.push("Religion");
 			}if (skillsChecked.get(`skill-Sleight of Hand`) == true) {
-				props.trait.skillsProf.push("Sleight of Hand");
+				newSkills.push("Sleight of Hand");
 			}if (skillsChecked.get(`skill-Stealth`) == true) {
-				props.trait.skillsProf.push("Stealth");
+				newSkills.push("Stealth");
 			}if (skillsChecked.get(`skill-Survival`) == true) {
-				props.trait.skillsProf.push("Survival");
+				newSkills.push("Survival");
 			}
 		}
+		if(!props.isNew){
+		props.trait.name = traitName;
+		props.trait.description = traitDescription;
+		props.trait.savingThrowsProf = [...newSavingThrows];
+		props.trait.skillsProf=[];
+		
+		
 		props.trait.modifiers=modifiers;
 		props.trait.smallProf=smallProfs;
 		props.trait.smallTools=smallTools;
 		setIsEditing(false);
 		setModifiers([]);
 		setSmallProfs([]);
-		setSmallTools([]);
+		setSmallTools([]);}
+		if(props.isNew){
+			props.addFeature({name:traitName,
+			description:traitDescription, 
+			savingThrowsProf:newSavingThrows,
+			skillsProf:newSkills,
+			modifiers:modifiers,
+			smallProf:smallProfs,
+			smallTools:smallTools
+		});}
+
 	};
 	const handleNameChange = (e: any) => {
 		setTraitName(e.target.value);
@@ -197,21 +215,21 @@ const TraitModal = (props) => {
 	const handleDescriptionChange = (e: any) => {
 		setTraitDescription(e.target.value);
 	};
-	const handleSkillsCheck = (e) => {
+	const handleSkillsCheck = (e: { target: { id: any; checked: any; }; }) => {
 		var newSkillsCheck = new Map(skillsChecked).set(
 			e.target.id,
 			e.target.checked
 		);
 		setSkillsChecked(newSkillsCheck);
 	};
-	const handleSavingThrows = (e) => {
+	const handleSavingThrows = (e: { target: { id: any; checked: any; }; }) => {
 		setSavingThrowsChecked(
 			new Map(savingThrowsChecked).set(e.target.id, e.target.checked)
 		);
 	};
 
 	//MODIFIERS
-	const handleDeleteModifier = (modifier) => {
+	const handleDeleteModifier = (modifier: { id: any; }) => {
 		var newModifiers = [...modifiers];
 		console.log(modifiers);
 		for (let index = 0; index < newModifiers.length; index++) {
@@ -221,7 +239,7 @@ const TraitModal = (props) => {
 		}
 		setModifiers(newModifiers);
 	};
-	const openEditModifier = (modifier) => {
+	const openEditModifier = (modifier: { id: React.SetStateAction<string>; name: any; category: React.SetStateAction<string>; type: React.SetStateAction<string>; value: React.SetStateAction<string>; }) => {
 		if (modifier != null) {
 			setModifierId(modifier.id);
 			setModifierName(modifier.name);
@@ -239,13 +257,13 @@ const TraitModal = (props) => {
 	const handleModifierNameChange = (e: any) => {
 		setModifierName(e.target.value);
 	};
-	const handleModifierCategoryChange = (e) => {
+	const handleModifierCategoryChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setModifierCategory(e.target.value);
 	};
-	const handleModifierTypeChange = (e) => {
+	const handleModifierTypeChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setModifierType(e.target.value);
 	};
-	const handleModifierValueChange = (e) => {
+	const handleModifierValueChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
 		setModifierValue(e.target.value);
 	};
 	const handleModifierSave = () => {
@@ -274,7 +292,7 @@ const TraitModal = (props) => {
 	};
 
 	//SMALL PROFICIENCIES
-	const handleDeleteProficiency = (prof) => {
+	const handleDeleteProficiency = (prof: { id: any; }) => {
 		var newSmallProf = [...smallProfs];
 		for (let index = 0; index < newSmallProf.length; index++) {
 			if (newSmallProf[index].id == prof.id) {
@@ -283,14 +301,14 @@ const TraitModal = (props) => {
 		}
 		setSmallProfs(newSmallProf);
 	};
-	const handleSaveProf = (profType, profProf) => {
+	const handleSaveProf = (profType: any, profProf: any) => {
 		var newProf = [...smallProfs];
 		console.log(smallProfs);
 		newProf.push({ id: Guid.create(), type: profType, prof: profProf });
 		setSmallProfs(newProf);
 	};
 	//SMALL TOOLS
-	const handleDeleteTool = (tool) => {
+	const handleDeleteTool = (tool: { id: any; }) => {
 		var newSmallTools = [...smallTools];
 		for (let index = 0; index < newSmallTools.length; index++) {
 			if (newSmallTools[index].id == tool.id) {
@@ -548,7 +566,11 @@ const TraitModal = (props) => {
 					</>
 				)
 			) : (
-				<ViewTrait trait={props.trait} onStartEditing={onStartEditing} abilityScores={props.abilityScores} classes={props.classes} />
+				<ViewTrait trait={props.trait} 
+				onStartEditing={onStartEditing} 
+				abilityScores={props.abilityScores} 
+				classes={props.classes} 
+				/>
 			)}
 		</div>
 	);

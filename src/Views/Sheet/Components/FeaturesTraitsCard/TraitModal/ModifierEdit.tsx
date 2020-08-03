@@ -23,11 +23,11 @@ export interface ModifierEditProps {
     modifierType:string;
     modifierCategory:string;
     modifierValue:string;
-    handleModifierNameChange;
-    handleModifierCategoryChange;
-    handleModifierTypeChange;
-    handleModifierValueChange;
-    handleModifierSave;
+    handleModifierNameChange:any;
+    handleModifierCategoryChange:any;
+    handleModifierTypeChange:any;
+    handleModifierValueChange:any;
+    handleModifierSave:any;
 }
 
 export interface ModifierEditState {}

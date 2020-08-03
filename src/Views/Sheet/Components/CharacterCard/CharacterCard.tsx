@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import './CharacterCard.css'
 import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
 
- const mapStateToProps = (state) => {
+ const mapStateToProps = (state: { name: any; race: { name: any; }; currentHealth: any; classes: any; }) => {
     return {
       name: state.name,
       race: state.race.name,
@@ -14,7 +14,7 @@ import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
   };
 
 
-  const CCard = (props) => {
+  const CCard = (props: { name: React.ReactNode; classes: any[]; race: React.ReactNode; }) => {
 
 
     return(<div className="card">
@@ -29,7 +29,7 @@ import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
                 <div className="characterClass">No Class Selected</div>
                 }
                 {props.classes.length>0 && 
-                props.classes.map((c)=>
+                props.classes.map((c: { classLevel: React.ReactNode; subclass: { subclassName: React.ReactNode; }; className: React.ReactNode; })=>
                 <div className="characterClass">{c.classLevel} {c.subclass.subclassName} {c.className}</div>)
                 }
             </div>
