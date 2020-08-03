@@ -11,14 +11,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/esm/Modal";
 import TraitModal from "../TraitModal/TraitModal";
 import SubclassFeatures from "./SubclassFeatures";
-import { truncateSync } from "fs";
 import SingleClassFeature from "./SingleClassFeature";
+
+import { UpdateClassTrait, UpdateSubclassTrait } from '../../../../../redux/actionCreators';
+
 
 const mapStateToProps = (state: any) => {
 	return {};
 };
 
-const mapDispatchToProps = (dispatch: any) => ({});
+const mapDispatchToProps = (dispatch: any) => ({
+	updateClassTrait: (newTraits,id) => dispatch(UpdateClassTrait(newTraits,id)),
+	updateSubclassTrait: (newTraits,id) => dispatch(UpdateSubclassTrait(newTraits,id))
+
+});
 
 const ClassFeatures = (props: any) => {
 	const [classFeature, setClassFeatureOpen] = React.useState(true);
@@ -32,6 +38,36 @@ const ClassFeatures = (props: any) => {
 		setIsOpen(false);
 		setIsEditing(false);
 		setIsNew(false);
+	};
+	const deleteTrait = (category, trait) => {
+		console.log(category)
+		switch (category) {
+			case "single":
+				var newTraits = [...props.c.traits];
+				for (let index = 0; index < newTraits.length; index++) {
+					if (newTraits[index].id == trait.id) {
+						newTraits.splice(index, 1);
+					}
+				}
+				props.updateClassTrait(newTraits, props.c.id);
+				break;
+			case "subclass":
+				var newTraits = [...props.c.subclass.traits];
+				for (let index = 0; index < newTraits.length; index++) {
+					if (newTraits[index].id == trait.id) {
+						newTraits.splice(index, 1);
+					}
+				}
+				props.updateSubclassTrait(newTraits, props.c.subclass.id);
+				break;
+			default:
+				break;
+		}
+
+
+		setFeatureType("");
+		setTrait(null);
+		closeTraitModal();
 	};
 	const addNewTrait = (newTrait) => {
 		switch (featureType) {
@@ -70,8 +106,8 @@ const ClassFeatures = (props: any) => {
 
 			{classFeature ? (
 				<>
-					{props.c.traits.length >= 1 &&
-						props.c.traits.map((t: any) => <SingleClassFeature trait={t} />)}
+					{props.c.traits!=null && props.c.traits.length > 0 &&
+						props.c.traits.map((t: any) => <SingleClassFeature trait={t} deleteTrait={deleteTrait}/>)}
 					<div
 						className="row icon"
 						style={{ fontSize: "12px", paddingLeft: "20px" }}
@@ -91,7 +127,7 @@ const ClassFeatures = (props: any) => {
 				</>
 			) : null}
 			<hr />
-			{props.c.subclass.traits.length >= 1 && (
+			{props.c.subclass.traits!=null && props.c.subclass.traits.length > 0 && (
 				<>
 					<div
 						className="row featureHeader"
@@ -115,8 +151,8 @@ const ClassFeatures = (props: any) => {
 					</div>
 					{subclassFeature ? (
 						<>
-							{props.c.subclass.traits.map((s) => (
-								<SubclassFeatures trait={s} />
+							{props.c.subclass.traits.map((s: { name: {}; description: React.ReactNode; }) => (
+								<SubclassFeatures trait={s} deleteTrait={deleteTrait} />
 							))}
 							<div
 								className="row icon"
@@ -153,6 +189,7 @@ const ClassFeatures = (props: any) => {
 						editing={isEditing}
 						isNew={isNew}
 						addFeature={addNewTrait}
+						onDelete={deleteTrait}
 					/>
 				</Modal.Body>
 			</Modal>

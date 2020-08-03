@@ -18,7 +18,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => ({
 
 });
-const BackgroundFeatures = (props: { trait: { name: {}; description: React.ReactNode; }; }) => {
+const BackgroundFeatures = (props) => {
 	const [isOpen, setIsOpen] = React.useState(false);
     const [trait, setTrait] = React.useState(null);
     const [expanded,setExpanded]=React.useState(null);
@@ -64,7 +64,9 @@ const BackgroundFeatures = (props: { trait: { name: {}; description: React.React
 				centered
 			>
 				<Modal.Body bsPrefix="modalContentCard">
-					<TraitModal trait={trait}/>
+					<TraitModal trait={trait} deleteTrait={()=>{setIsOpen(false);
+					setExpanded(false);
+						props.deleteTrait("background",trait)}}/>
 				</Modal.Body>
 			</Modal>
 		</>

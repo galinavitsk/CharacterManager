@@ -23,26 +23,40 @@ export const Naomi: Character = {
 				id: Guid.create(),
 				name: "Darkvision",
 				description: "You are able to see in the dark",
-				savingThrowsProf:null,
-					skillsProf:null,
+				savingThrowsProf: null,
+				skillsProf: null,
 				modifiers: null,
-				
-				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
-					
+
+				smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+				smallTools: [
+					{
+						id: Guid.create(),
+						name: "Test Tool",
+						bonus: "Proficient",
+						attribute: "Strength",
+						mods: 0,
+					},
+				],
 			},
 			{
 				id: Guid.create(),
 				name: "Healing Hands",
 				description:
 					"Whatever Healing hands do. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-					savingThrowsProf:null,
-					skillsProf:null,
+				savingThrowsProf: null,
+				skillsProf: null,
 				modifiers: null,
-				
-				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
-					
+
+				smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+				smallTools: [
+					{
+						id: Guid.create(),
+						name: "Test Tool",
+						bonus: "Proficient",
+						attribute: "Strength",
+						mods: 0,
+					},
+				],
 			},
 		],
 	},
@@ -59,11 +73,21 @@ export const Naomi: Character = {
 						name: "Test Subclass Trait 1",
 						description:
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-							savingThrowsProf:["Strength","Constitution"],
-							skillsProf:["Acrobatics"],
+						savingThrowsProf: ["Strength", "Constitution"],
+						skillsProf: ["Acrobatics"],
 						modifiers: null,
-						smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+						smallProf: [
+							{ id: Guid.create(), prof: "Shortword", type: "Weapon" },
+						],
+						smallTools: [
+							{
+								id: Guid.create(),
+								name: "Test Tool",
+								bonus: "Proficient",
+								attribute: "Strength",
+								mods: 0,
+							},
+						],
 					},
 				],
 			},
@@ -76,26 +100,42 @@ export const Naomi: Character = {
 					name: "Test Class Trait",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-						savingThrowsProf:null,
-						
-						skillsProf:null,
+					savingThrowsProf: null,
+
+					skillsProf: null,
 					modifiers: null,
-					
-					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+
+					smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+					smallTools: [
+						{
+							id: Guid.create(),
+							name: "Test Tool",
+							bonus: "Proficient",
+							attribute: "Strength",
+							mods: 0,
+						},
+					],
 				},
 				{
 					id: Guid.create(),
 					name: "Test Class Trait 01",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-						savingThrowsProf:null,
-						
-						skillsProf:null,
+					savingThrowsProf: null,
+
+					skillsProf: null,
 					modifiers: null,
-					
-					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+
+					smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+					smallTools: [
+						{
+							id: Guid.create(),
+							name: "Test Tool",
+							bonus: "Proficient",
+							attribute: "Strength",
+							mods: 0,
+						},
+					],
 				},
 			],
 		},
@@ -111,12 +151,22 @@ export const Naomi: Character = {
 						name: "Test Subclass Trait 11",
 						description:
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-							savingThrowsProf:null,
-							
-							skillsProf:null,
+						savingThrowsProf: null,
+
+						skillsProf: null,
 						modifiers: null,
-						smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-						smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+						smallProf: [
+							{ id: Guid.create(), prof: "Shortword", type: "Weapon" },
+						],
+						smallTools: [
+							{
+								id: Guid.create(),
+								name: "Test Tool",
+								bonus: "Proficient",
+								attribute: "Strength",
+								mods: 0,
+							},
+						],
 					},
 				],
 			},
@@ -129,24 +179,40 @@ export const Naomi: Character = {
 					name: "Test Class Trait 11",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-						savingThrowsProf:null,
-						
-						skillsProf:null,
+					savingThrowsProf: null,
+
+					skillsProf: null,
 					modifiers: null,
-					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+					smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+					smallTools: [
+						{
+							id: Guid.create(),
+							name: "Test Tool",
+							bonus: "Proficient",
+							attribute: "Strength",
+							mods: 0,
+						},
+					],
 				},
 				{
 					id: Guid.create(),
 					name: "Test Class Trait 12",
 					description:
 						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-						savingThrowsProf:null,
-						
-						skillsProf:null,
+					savingThrowsProf: null,
+
+					skillsProf: null,
 					modifiers: null,
-					smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-					smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+					smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+					smallTools: [
+						{
+							id: Guid.create(),
+							name: "Test Tool",
+							bonus: "Proficient",
+							attribute: "Strength",
+							mods: 0,
+						},
+					],
 				},
 			],
 		},
@@ -170,27 +236,37 @@ export const Naomi: Character = {
 			name: "Test General Trait 1",
 			description:
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-				savingThrowsProf:["Strength","Constitution"],
-							skillsProf:["Acrobatics"],
-			modifiers: [{
-				id:Guid.create(),
-				name: null,
-				category: "Bonus",
-				type:"Weapon Attacks",
-				value:"-2"
-			}],
-			
-			smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+			savingThrowsProf: ["Strength", "Constitution"],
+			skillsProf: ["Acrobatics"],
+			modifiers: [
+				{
+					id: Guid.create(),
+					name: null,
+					category: "Bonus",
+					type: "Weapon Attacks",
+					value: "-2",
+				},
+			],
+
+			smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+			smallTools: [
+				{
+					id: Guid.create(),
+					name: "Test Tool",
+					bonus: "Proficient",
+					attribute: "Strength",
+					mods: 0,
+				},
+			],
 		},
 		{
 			id: Guid.create(),
 			name: "Test General Trait 2",
 			description:
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-				savingThrowsProf:null,
-				
-				skillsProf:null,
+			savingThrowsProf: null,
+
+			skillsProf: null,
 			modifiers: [
 				{
 					id: Guid.create(),
@@ -200,53 +276,89 @@ export const Naomi: Character = {
 					value: "+4",
 				},
 			],
-			
-			smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-			smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+
+			smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+			smallTools: [
+				{
+					id: Guid.create(),
+					name: "Test Tool",
+					bonus: "Proficient",
+					attribute: "Strength",
+					mods: 0,
+				},
+			],
 		},
 	],
-	background: {id:Guid.create(),
+	background: {
+		id: Guid.create(),
 		name: "Aclolyte",
 		traits: [
-			{id:Guid.create(),
+			{
+				id: Guid.create(),
 				name: "Test Background Trait 1",
 				description:
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-					savingThrowsProf:null,
-					skillsProf:null,
+				savingThrowsProf: null,
+				skillsProf: null,
 				modifiers: null,
-				
-				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+
+				smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+				smallTools: [
+					{
+						id: Guid.create(),
+						name: "Test Tool",
+						bonus: "Proficient",
+						attribute: "Strength",
+						mods: 0,
+					},
+				],
 			},
-			{id:Guid.create(),
+			{
+				id: Guid.create(),
 				name: "Test Background Trait 2",
 				description:
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-					savingThrowsProf:null,
-					skillsProf:null,
+				savingThrowsProf: null,
+				skillsProf: null,
 				modifiers: null,
-				
-				smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-				smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Strength",mods:0}]
+
+				smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+				smallTools: [
+					{
+						id: Guid.create(),
+						name: "Test Tool",
+						bonus: "Proficient",
+						attribute: "Strength",
+						mods: 0,
+					},
+				],
 			},
 		],
 	},
 	conditions: [
-		{id:Guid.create(),
+		{
+			id: Guid.create(),
 			name: "blind",
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
 		},
 	],
 	exhaustion: 1,
 
-    smallProf:[{id:Guid.create(),prof:"Shortword", type:"Weapon"}],
-    smallTools:[{id:Guid.create(), name:"Test Tool", bonus:"Proficient", attribute:"Str",mods:0}]
+	smallProf: [{ id: Guid.create(), prof: "Shortword", type: "Weapon" }],
+	smallTools: [
+		{
+			id: Guid.create(),
+			name: "Test Tool",
+			bonus: "Proficient",
+			attribute: "Str",
+			mods: 0,
+		},
+	],
 };
 
 // Our root reducer starts with the initial state
 // and must return a representation of the next state
-export const rootReducer = (state = Naomi, action: { type: any; payload: any; id: Guid; }) => {
+export const rootReducer = (state = Naomi, action) => {
 	switch (action.type) {
 		case types.UPDATE_CURRENT_HEALTH:
 			return { ...state, currentHealth: action.payload };
@@ -266,24 +378,72 @@ export const rootReducer = (state = Naomi, action: { type: any; payload: any; id
 							classLevel: data.classLevel,
 							hitDie: data.hitDie,
 							currentHDie: action.payload,
+							traits:data.traits
 						};
 					}
 				}),
 			};
-		case types.UPDATE_CHARACTER_TRAIT:
-			return{
-				...state,
-				traits:state.traits.map((data)=>{
-					if(data.id!=action.id){
-						return data;
-					}
-					else{
-						return action.payload;
-					}
-				})
-
-
+		case types.UPDATE_TRAIT:
+			switch (action.location) {
+				case "racial":
+					return { ...state, race: { ...state, traits: [...action.payload] } };
+					break;
+				case "background":
+					return {
+						...state,
+						background: { ...state, traits: [...action.payload] },
+					};
+					break;
+				case "other":
+					return { ...state, traits: [...action.payload] };
+					break;
+				default:
+					return { ...state };
+					break;
 			}
+		case types.UPDATE_CLASS_TRAIT:
+			return {
+				...state,
+				classes: state.classes.map((data) => {
+					if (data.id != action.id) {
+						return data;
+					} else {
+
+						console.log(action.payload);
+						return {
+							id: data.id,
+							className: data.className,
+							subclass: data.subclass,
+							classLevel: data.classLevel,
+							hitDie: data.hitDie,
+							currentHDie: data.currentHDie,
+							traits:action.payload
+						};	
+					}
+				}),
+			};
+		case types.UPDATE_SUBCLASS_TRAIT:
+			console.log("TEST");
+			return {
+				...state,
+				classes: state.classes.map((data) => {
+					console.log(data);
+					if (data.subclass.id != action.id) {
+						console.log("TEST 2");
+						return data;
+					} else {
+						console.log(action.payload);
+						return {
+							...state,
+							subclass: {
+								id:data.subclass.id,
+								className:data.subclass.subclassName,
+								traits:action.payload
+							},
+						};
+					}
+				}),
+			};
 
 		default:
 			return state;

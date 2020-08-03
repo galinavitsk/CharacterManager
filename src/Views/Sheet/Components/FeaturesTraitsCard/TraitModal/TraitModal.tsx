@@ -122,6 +122,11 @@ const TraitModal = (props) => {
 		}
 	};
 
+	const DeleteTrait=()=>{
+		console.log(props);
+		props.deleteTrait();
+	};
+
 	const onSaveTrait = () => {
 		var newSavingThrows=[];
 		var newSkills=[];
@@ -209,6 +214,7 @@ const TraitModal = (props) => {
 		});}
 
 	};
+
 	const handleNameChange = (e: any) => {
 		setTraitName(e.target.value);
 	};
@@ -231,7 +237,7 @@ const TraitModal = (props) => {
 	//MODIFIERS
 	const handleDeleteModifier = (modifier: { id: any; }) => {
 		var newModifiers = [...modifiers];
-		console.log(modifiers);
+		
 		for (let index = 0; index < newModifiers.length; index++) {
 			if (newModifiers[index].id == modifier.id) {
 				newModifiers.splice(index, 1);
@@ -567,6 +573,7 @@ const TraitModal = (props) => {
 				)
 			) : (
 				<ViewTrait trait={props.trait} 
+				Delete={DeleteTrait}
 				onStartEditing={onStartEditing} 
 				abilityScores={props.abilityScores} 
 				classes={props.classes} 

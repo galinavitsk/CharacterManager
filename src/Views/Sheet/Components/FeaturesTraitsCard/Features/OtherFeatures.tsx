@@ -16,7 +16,7 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({});
-const OtherFeatures = (props: { trait: { name: {}; description: React.ReactNode; }; }) => {
+const OtherFeatures = (props) => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [trait, setTrait] = React.useState(null);
 	const [expanded, setExpanded] = React.useState(null);
@@ -82,7 +82,9 @@ const OtherFeatures = (props: { trait: { name: {}; description: React.ReactNode;
 				centered
 			>
 				<Modal.Body bsPrefix="modalContentCard">
-					<TraitModal trait={trait}/>
+					<TraitModal trait={trait} deleteTrait={()=>{setIsOpen(false);
+					setExpanded(false);
+						props.deleteTrait("other",trait)}}/>
 				</Modal.Body>
 			</Modal>
 		</>

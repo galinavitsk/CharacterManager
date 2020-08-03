@@ -2,7 +2,7 @@ import * as React from "react";
 import { Component } from "react";
 import { Trait } from "../../../../../Data/Trait";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faTrash } from "@fortawesome/free-solid-svg-icons";
 import GetAbilityMod from "../../../../../scripts/GetAbilityMod";
 
 import GetCharacterLevel from "../../../../../scripts/GetCharacterLevel";
@@ -12,6 +12,7 @@ import GetProficiency from "../../../../../scripts/GetProficiency";
 export interface ViewTraitProps {
 	trait: Trait;
 	onStartEditing: () => void;
+	Delete: () => void;
 	abilityScores: { [x: string]: number; };
 	classes: import("../../../../../Data/Class").Class[];
 }
@@ -104,14 +105,24 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 							</div>
 						</>
 					))}
-				<div className="row" style={{ float: "right" }}>
+				<div className="row" >
+				<div className="col-6" style={{ float: "left" }}>
 					<div
 						className="icon"
+						onClick={() => {this.props.Delete();}}
+					>
+						<FontAwesomeIcon icon={faTrash} />
+					</div>
+					</div>
+					<div className="col-6">
+					<div
+						className="icon" style={{ float: "right" }}
 						onClick={() => {
 							this.props.onStartEditing();
 						}}
 					>
 						<FontAwesomeIcon icon={faCog} />
+					</div>
 					</div>
 				</div>
 			</>
