@@ -5,12 +5,7 @@ export interface Race {
     //Score Imporvements
     id:Guid;
     name:string;
-    Strength:number;
-    Dexterity:number;
-    Constitution:number;
-    Intelligence:number;
-    Wisdom:number;
-    Charisma:number;
+    abilityScores: { [key: string]: number; };
     size:string;
     speed:number;
     traits:Trait[];

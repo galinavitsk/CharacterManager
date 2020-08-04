@@ -13,7 +13,7 @@ import TraitModal from "../TraitModal/TraitModal";
 import SubclassFeatures from "./SubclassFeatures";
 import SingleClassFeature from "./SingleClassFeature";
 
-import { UpdateClassTrait, UpdateSubclassTrait } from '../../../../../redux/actionCreators';
+import {UpdateSubclassTrait, UpdateClassTrait } from '../../../../../redux/actionCreators';
 
 
 const mapStateToProps = (state: any) => {
@@ -73,15 +73,53 @@ const ClassFeatures = (props: any) => {
 		switch (featureType) {
 			case "single":
 				props.c.traits.push(newTrait);
+				props.updateClassTrait(props.c.traits,props.c.id)
 				break;
 			case "subclass":
 				props.c.subclass.traits.push(newTrait);
+				props.updateSubclassTrait(props.c.subclass.traits,props.c.subclass.id)
 				break;
 			default:
 				break;
 		}
 		setFeatureType("");
 		closeTraitModal();
+	};
+	const editTrait = (newTrait: any, featureType: string) => {
+		console.log(newTrait);
+		switch (featureType) {
+			case "single":
+				var newTraits = [...props.c.traits];
+				newTraits.map((trait) => {
+					if (trait.id == newTrait.id) {
+						trait.name = newTrait.name;
+						trait.description = newTrait.description;
+						trait.savingThrowsProf = newTrait.savingThrowsProf;
+						trait.modifiers = newTrait.modifiers;
+						trait.smallProf = newTrait.smallProf;
+						trait.smallTools = newTrait.smallTools;
+					}
+				});
+				props.updateClassTrait(newTraits,props.c.id);
+				break;
+			case "subclass":
+				var newTraits = [...props.c.subclass.traits];
+				newTraits.map((trait) => {
+					if (trait.id == newTrait.id) {
+						trait.name = newTrait.name;
+						trait.description = newTrait.description;
+						trait.savingThrowsProf = newTrait.savingThrowsProf;
+						trait.modifiers = newTrait.modifiers;
+						trait.smallProf = newTrait.smallProf;
+						trait.smallTools = newTrait.smallTools;
+					}
+				});
+				props.updateSubclassTrait(nwTraits,props.c.subclass.id)
+				break;
+			default:
+				break;
+		}
+		setFeatureType("");
 	};
 
 	return (
@@ -107,7 +145,7 @@ const ClassFeatures = (props: any) => {
 			{classFeature ? (
 				<>
 					{props.c.traits!=null && props.c.traits.length > 0 &&
-						props.c.traits.map((t: any) => <SingleClassFeature trait={t} deleteTrait={deleteTrait}/>)}
+						props.c.traits.map((t: any) => <SingleClassFeature trait={t} editTrait={editTrait} deleteTrait={deleteTrait}/>)}
 					<div
 						className="row icon"
 						style={{ fontSize: "12px", paddingLeft: "20px" }}
@@ -127,9 +165,7 @@ const ClassFeatures = (props: any) => {
 				</>
 			) : null}
 			<hr />
-			{props.c.subclass.traits!=null && props.c.subclass.traits.length > 0 && (
-				<>
-					<div
+			{props.c.subclass!=null &&<><div
 						className="row featureHeader"
 						onClick={() => setSubclassFeatureOpen(!subclassFeature)}
 					>
@@ -148,32 +184,35 @@ const ClassFeatures = (props: any) => {
 								)}
 							</div>
 						</div>
-					</div>
+						</div>
+			{props.c.subclass.traits!=null && props.c.subclass.traits.length > 0 && (
+				<>
+					
 					{subclassFeature ? (
 						<>
 							{props.c.subclass.traits.map((s: { name: {}; description: React.ReactNode; }) => (
-								<SubclassFeatures trait={s} deleteTrait={deleteTrait} />
+								<SubclassFeatures trait={s} editTrait={editTrait}  deleteTrait={deleteTrait} />
 							))}
-							<div
-								className="row icon"
-								style={{ fontSize: "12px", paddingLeft: "20px" }}
-								onClick={() => {
-									setIsEditing(true);
-									setIsNew(true);
-									setFeatureType("subclass");
-									setIsOpen(true);
-								}}
-							>
-								<FontAwesomeIcon
-									icon={faPlusCircle}
-									style={{ marginRight: "5px" }}
-								/>
-								Add Subclass Feature
-							</div>
-						</>
+							</>
+							
 					) : null}
 				</>
-			)}
+			)}<div
+			className="row icon"
+			style={{ fontSize: "12px", paddingLeft: "20px" }}
+			onClick={() => {
+				setIsEditing(true);
+				setIsNew(true);
+				setFeatureType("subclass");
+				setIsOpen(true);
+			}}
+		>
+			<FontAwesomeIcon
+				icon={faPlusCircle}
+				style={{ marginRight: "5px" }}
+			/>
+			Add Subclass Feature
+		</div></>}
 			<hr />
 			<Modal
 				show={isOpen}

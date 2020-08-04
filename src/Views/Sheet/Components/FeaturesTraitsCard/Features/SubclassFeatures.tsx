@@ -30,6 +30,10 @@ const BackgroundFeatures = (props) => {
 		setIsOpen(true);
 	};
 
+	const modifyTrait=(newTrait)=>{
+		console.log(newTrait);
+		props.editTrait(newTrait,"subclass");
+	}
 	return (
 		<>
 			
@@ -68,7 +72,8 @@ const BackgroundFeatures = (props) => {
 				centered
 			>
 				<Modal.Body bsPrefix="modalContentCard">
-					<TraitModal trait={trait} deleteTrait={()=>{setIsOpen(false);
+					<TraitModal 
+					onEditTrait={modifyTrait} trait={trait} deleteTrait={()=>{setIsOpen(false);
 					setExpanded(false);
 						props.deleteTrait("subclass",trait)}}/>
 				</Modal.Body>

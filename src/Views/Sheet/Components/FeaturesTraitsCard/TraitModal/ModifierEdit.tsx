@@ -42,14 +42,14 @@ class ModifierEdit extends React.Component<
 				<div className="row">
 					<div
 						className="col-6 icon"
-						style={{ textAlign: "left" }}
+						style={{ textAlign: "left",padding:"0" }}
 						onClick={() => {
 							this.props.setIsModifierEdit(false);
 						}}
 					>
 						<FontAwesomeIcon icon={faTimes} />
 					</div>
-					<div className="col-6 icon" style={{ textAlign: "right" }} onClick={this.props.handleModifierSave}>
+					<div className="col-6 icon" style={{ textAlign: "right" ,padding:"0"}} onClick={this.props.handleModifierSave}>
 						<FontAwesomeIcon icon={faSave} />
 					</div>
 				</div>
@@ -119,7 +119,7 @@ class ModifierEdit extends React.Component<
 								htmlSize={5}
 								onChange={this.props.handleModifierValueChange.bind(this)}
 							>
-								{GetModifierValues().map((v) => (
+								{GetModifierValues(this.props.modifierCategory).map((v) => (
 									<option>{v}</option>
 								))}
 							</Form.Control>

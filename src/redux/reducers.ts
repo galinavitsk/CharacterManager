@@ -10,12 +10,15 @@ export const Naomi: Character = {
 	race: {
 		id: Guid.create(),
 		name: "Fallen Aassimar",
-		Strength: 0,
-		Dexterity: 0,
-		Constitution: 0,
-		Intelligence: 0,
-		Wisdom: 0,
-		Charisma: 0,
+
+		abilityScores: {
+			["Strength"]: 2,
+			["Dexterity"]: 3,
+			["Constitution"]: -4,
+			["Intelligence"]: 1,
+			["Wisdom"]: 1,
+			["Charisma"]: 0,
+		},
 		size: "medium",
 		speed: 30,
 		traits: [
@@ -378,20 +381,20 @@ export const rootReducer = (state = Naomi, action) => {
 							classLevel: data.classLevel,
 							hitDie: data.hitDie,
 							currentHDie: action.payload,
-							traits:data.traits
+							traits: data.traits,
 						};
 					}
 				}),
 			};
-		case types.UPDATE_TRAIT:
+		case types.MODIFY_TRAITS:
 			switch (action.location) {
 				case "racial":
-					return { ...state, race: { ...state, traits: [...action.payload] } };
+					return { ...state, race: { ...state.race, traits: [...action.payload] } };
 					break;
 				case "background":
 					return {
 						...state,
-						background: { ...state, traits: [...action.payload] },
+						background: { ...state.background, traits: [...action.payload] },
 					};
 					break;
 				case "other":
@@ -408,7 +411,6 @@ export const rootReducer = (state = Naomi, action) => {
 					if (data.id != action.id) {
 						return data;
 					} else {
-
 						console.log(action.payload);
 						return {
 							id: data.id,
@@ -417,28 +419,26 @@ export const rootReducer = (state = Naomi, action) => {
 							classLevel: data.classLevel,
 							hitDie: data.hitDie,
 							currentHDie: data.currentHDie,
-							traits:action.payload
-						};	
+							traits: action.payload,
+						};
 					}
 				}),
 			};
 		case types.UPDATE_SUBCLASS_TRAIT:
-			console.log("TEST");
 			return {
 				...state,
 				classes: state.classes.map((data) => {
 					console.log(data);
 					if (data.subclass.id != action.id) {
-						console.log("TEST 2");
 						return data;
 					} else {
 						console.log(action.payload);
 						return {
-							...state,
+							...data,
 							subclass: {
-								id:data.subclass.id,
-								className:data.subclass.subclassName,
-								traits:action.payload
+								id: data.subclass.id,
+								subclassName: data.subclass.subclassName,
+								traits: action.payload,
 							},
 						};
 					}

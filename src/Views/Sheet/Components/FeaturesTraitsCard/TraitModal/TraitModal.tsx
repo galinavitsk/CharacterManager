@@ -14,9 +14,6 @@ import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import { GetAbilities, GetSkills } from "../../../../../Data/Abilities";
 import {
-	GetModifierCategories,
-	GetModifierType,
-	GetModifierValues,
 	Modifier,
 } from "../../../../../Data/Modifier";
 import Overlay from "react-bootstrap/Overlay";
@@ -28,10 +25,10 @@ import SmallProficienciesAdd from "./SmallProficienciesAdd";
 import SmallTools from "./SmallTools";
 import SmallToolsAdd from "./SmallToolsAdd";
 
-const mapStateToProps = (state: { abilityScores: any; classes: any; }) => {
+const mapStateToProps = (state: { abilityScores: any; classes: any }) => {
 	return {
-abilityScores:state.abilityScores,
-classes:state.classes
+		abilityScores: state.abilityScores,
+		classes: state.classes,
 	};
 };
 
@@ -74,21 +71,24 @@ const TraitModal = (props) => {
 			);
 		}
 		if (props.trait.skillsProf != null) {
-			props.trait.skillsProf.map((skill: any) => skills.set(`skill-${skill}`, true));
+			props.trait.skillsProf.map((skill: any) =>
+				skills.set(`skill-${skill}`, true)
+			);
 		}
 		if (props.trait.modifiers != null) {
-			props.trait.modifiers.map((mod: { id: any; name: any; category: any; type: any; value: any; }) =>
-				modifiers.push({
-					id: mod.id,
-					name: mod.name,
-					category: mod.category,
-					type: mod.type,
-					value: mod.value,
-				})
+			props.trait.modifiers.map(
+				(mod: { id: any; name: any; category: any; type: any; value: any }) =>
+					modifiers.push({
+						id: mod.id,
+						name: mod.name,
+						category: mod.category,
+						type: mod.type,
+						value: mod.value,
+					})
 			);
 		}
 		if (props.trait.smallProf != null) {
-			props.trait.smallProf.map((p: { id: any; type: any; prof: any; }) =>
+			props.trait.smallProf.map((p: { id: any; type: any; prof: any }) =>
 				smallProfs.push({
 					id: p.id,
 					type: p.type,
@@ -97,14 +97,15 @@ const TraitModal = (props) => {
 			);
 		}
 		if (props.trait.smallTools != null) {
-			props.trait.smallTools.map((t: { id: any; name: any; bonus: any; attribute: any; mods: any; }) =>
-				smallTools.push({
-					id: t.id,
-					name: t.name,
-					bonus: t.bonus,
-					attribute: t.attribute,
-					mods: t.mods,
-				})
+			props.trait.smallTools.map(
+				(t: { id: any; name: any; bonus: any; attribute: any; mods: any }) =>
+					smallTools.push({
+						id: t.id,
+						name: t.name,
+						bonus: t.bonus,
+						attribute: t.attribute,
+						mods: t.mods,
+					})
 			);
 		}
 		setSavingThrowsChecked(new Map(savingThrows));
@@ -112,24 +113,23 @@ const TraitModal = (props) => {
 		setIsEditing(true);
 	};
 	const onStopEdit = () => {
-		if(!props.isNew){
-		setIsEditing(false);
-		setModifiers([]);
-		setSmallProfs([]);
-		setSmallTools([]);}
-		else{
+		if (!props.isNew) {
+			setIsEditing(false);
+			setModifiers([]);
+			setSmallProfs([]);
+			setSmallTools([]);
+		} else {
 			props.closeModal();
 		}
 	};
 
-	const DeleteTrait=()=>{
-		console.log(props);
+	const DeleteTrait = () => {
 		props.deleteTrait();
 	};
 
 	const onSaveTrait = () => {
-		var newSavingThrows=[];
-		var newSkills=[];
+		var newSavingThrows = [];
+		var newSkills = [];
 		//Set Saving Thows
 		{
 			if (savingThrowsChecked.get(`saving-Strength`) == true) {
@@ -155,64 +155,87 @@ const TraitModal = (props) => {
 		{
 			if (skillsChecked.get(`skill-Acrobatics`) == true) {
 				newSkills.push("Acrobatics");
-			}if (skillsChecked.get(`skill-Animal Handling`) == true) {
+			}
+			if (skillsChecked.get(`skill-Animal Handling`) == true) {
 				newSkills.push("Animal Handling");
-			}if (skillsChecked.get(`skill-Arcana`) == true) {
+			}
+			if (skillsChecked.get(`skill-Arcana`) == true) {
 				newSkills.push("Arcana");
-			}if (skillsChecked.get(`skill-Athetics`) == true) {
+			}
+			if (skillsChecked.get(`skill-Athetics`) == true) {
 				newSkills.push("Athetics");
-			}if (skillsChecked.get(`skill-Deception`) == true) {
+			}
+			if (skillsChecked.get(`skill-Deception`) == true) {
 				newSkills.push("Deception");
-			}if (skillsChecked.get(`skill-History`) == true) {
+			}
+			if (skillsChecked.get(`skill-History`) == true) {
 				newSkills.push("History");
-			}if (skillsChecked.get(`skill-Insight`) == true) {
+			}
+			if (skillsChecked.get(`skill-Insight`) == true) {
 				newSkills.push("Insight");
-			}if (skillsChecked.get(`skill-Intimidation`) == true) {
+			}
+			if (skillsChecked.get(`skill-Intimidation`) == true) {
 				newSkills.push("Intimidation");
-			}if (skillsChecked.get(`skill-Medicine`) == true) {
+			}
+			if (skillsChecked.get(`skill-Medicine`) == true) {
 				newSkills.push("Medicine");
-			}if (skillsChecked.get(`skill-Nature`) == true) {
+			}
+			if (skillsChecked.get(`skill-Nature`) == true) {
 				newSkills.push("Nature");
-			}if (skillsChecked.get(`skill-Perception`) == true) {
+			}
+			if (skillsChecked.get(`skill-Perception`) == true) {
 				newSkills.push("Perception");
-			}if (skillsChecked.get(`skill-Performance`) == true) {
+			}
+			if (skillsChecked.get(`skill-Performance`) == true) {
 				newSkills.push("Performance");
-			}if (skillsChecked.get(`skill-Persuasion`) == true) {
+			}
+			if (skillsChecked.get(`skill-Persuasion`) == true) {
 				newSkills.push("Persuasion");
-			}if (skillsChecked.get(`skill-Religion`) == true) {
+			}
+			if (skillsChecked.get(`skill-Religion`) == true) {
 				newSkills.push("Religion");
-			}if (skillsChecked.get(`skill-Sleight of Hand`) == true) {
+			}
+			if (skillsChecked.get(`skill-Sleight of Hand`) == true) {
 				newSkills.push("Sleight of Hand");
-			}if (skillsChecked.get(`skill-Stealth`) == true) {
+			}
+			if (skillsChecked.get(`skill-Stealth`) == true) {
 				newSkills.push("Stealth");
-			}if (skillsChecked.get(`skill-Survival`) == true) {
+			}
+			if (skillsChecked.get(`skill-Survival`) == true) {
 				newSkills.push("Survival");
 			}
 		}
-		if(!props.isNew){
-		props.trait.name = traitName;
-		props.trait.description = traitDescription;
-		props.trait.savingThrowsProf = [...newSavingThrows];
-		props.trait.skillsProf=[];
-		
-		
-		props.trait.modifiers=modifiers;
-		props.trait.smallProf=smallProfs;
-		props.trait.smallTools=smallTools;
+
+		if (!props.isNew) {
+
+
 		setIsEditing(false);
+			props.onEditTrait({
+				id: props.trait.id,
+				name: traitName,
+				description: traitDescription,
+				savingThrowsProf: [...newSavingThrows],
+				skillsProf: [...newSkills],
+				modifiers: [...modifiers],
+				smallProf: [...smallProfs],
+				smallTools: [...smallTools],
+			});
+			
+		}
+		if (props.isNew) {
+			props.addFeature({
+				name: traitName,
+				description: traitDescription,
+				savingThrowsProf: [...newSavingThrows],
+				skillsProf: [...newSkills],
+				modifiers: [...modifiers],
+				smallProf: [...smallProfs],
+				smallTools: [...smallTools],
+			});
+		}
 		setModifiers([]);
 		setSmallProfs([]);
-		setSmallTools([]);}
-		if(props.isNew){
-			props.addFeature({name:traitName,
-			description:traitDescription, 
-			savingThrowsProf:newSavingThrows,
-			skillsProf:newSkills,
-			modifiers:modifiers,
-			smallProf:smallProfs,
-			smallTools:smallTools
-		});}
-
+		setSmallTools([]);
 	};
 
 	const handleNameChange = (e: any) => {
@@ -221,23 +244,23 @@ const TraitModal = (props) => {
 	const handleDescriptionChange = (e: any) => {
 		setTraitDescription(e.target.value);
 	};
-	const handleSkillsCheck = (e: { target: { id: any; checked: any; }; }) => {
+	const handleSkillsCheck = (e: { target: { id: any; checked: any } }) => {
 		var newSkillsCheck = new Map(skillsChecked).set(
 			e.target.id,
 			e.target.checked
 		);
 		setSkillsChecked(newSkillsCheck);
 	};
-	const handleSavingThrows = (e: { target: { id: any; checked: any; }; }) => {
+	const handleSavingThrows = (e: { target: { id: any; checked: any } }) => {
 		setSavingThrowsChecked(
 			new Map(savingThrowsChecked).set(e.target.id, e.target.checked)
 		);
 	};
 
 	//MODIFIERS
-	const handleDeleteModifier = (modifier: { id: any; }) => {
+	const handleDeleteModifier = (modifier: { id: any }) => {
 		var newModifiers = [...modifiers];
-		
+
 		for (let index = 0; index < newModifiers.length; index++) {
 			if (newModifiers[index].id == modifier.id) {
 				newModifiers.splice(index, 1);
@@ -245,7 +268,13 @@ const TraitModal = (props) => {
 		}
 		setModifiers(newModifiers);
 	};
-	const openEditModifier = (modifier: { id: React.SetStateAction<string>; name: any; category: React.SetStateAction<string>; type: React.SetStateAction<string>; value: React.SetStateAction<string>; }) => {
+	const openEditModifier = (modifier: {
+		id: React.SetStateAction<string>;
+		name: any;
+		category: React.SetStateAction<string>;
+		type: React.SetStateAction<string>;
+		value: React.SetStateAction<string>;
+	}) => {
 		if (modifier != null) {
 			setModifierId(modifier.id);
 			setModifierName(modifier.name);
@@ -263,13 +292,39 @@ const TraitModal = (props) => {
 	const handleModifierNameChange = (e: any) => {
 		setModifierName(e.target.value);
 	};
-	const handleModifierCategoryChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+	const handleModifierCategoryChange = (e: {
+		target: { value: React.SetStateAction<string> };
+	}) => {
 		setModifierCategory(e.target.value);
+		if (e.target.value == "Bonus") {
+			setModifierType("Proficiency Bonus");
+			setModifierValue("+Proficiency Bonus");
+		}
+		if (e.target.value == "Ability Score") {
+			setModifierType("Strength");
+			setModifierValue("+Proficiency Bonus");
+		}
+		if (e.target.value == "Ability Modifier") {
+			setModifierType("Strength");
+			setModifierValue("+Proficiency Bonus");
+		}
+		if (e.target.value == "Saving Throw") {
+			setModifierType("Strength");
+			setModifierValue("+Proficiency Bonus");
+		}
+		if (e.target.value == "Skill") {
+			setModifierType("Acrobatics");
+			setModifierValue("+Proficiency Bonus");
+		}
 	};
-	const handleModifierTypeChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+	const handleModifierTypeChange = (e: {
+		target: { value: React.SetStateAction<string> };
+	}) => {
 		setModifierType(e.target.value);
 	};
-	const handleModifierValueChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+	const handleModifierValueChange = (e: {
+		target: { value: React.SetStateAction<string> };
+	}) => {
 		setModifierValue(e.target.value);
 	};
 	const handleModifierSave = () => {
@@ -298,7 +353,7 @@ const TraitModal = (props) => {
 	};
 
 	//SMALL PROFICIENCIES
-	const handleDeleteProficiency = (prof: { id: any; }) => {
+	const handleDeleteProficiency = (prof: { id: any }) => {
 		var newSmallProf = [...smallProfs];
 		for (let index = 0; index < newSmallProf.length; index++) {
 			if (newSmallProf[index].id == prof.id) {
@@ -309,12 +364,11 @@ const TraitModal = (props) => {
 	};
 	const handleSaveProf = (profType: any, profProf: any) => {
 		var newProf = [...smallProfs];
-		console.log(smallProfs);
 		newProf.push({ id: Guid.create(), type: profType, prof: profProf });
 		setSmallProfs(newProf);
 	};
 	//SMALL TOOLS
-	const handleDeleteTool = (tool: { id: any; }) => {
+	const handleDeleteTool = (tool: { id: any }) => {
 		var newSmallTools = [...smallTools];
 		for (let index = 0; index < newSmallTools.length; index++) {
 			if (newSmallTools[index].id == tool.id) {
@@ -323,9 +377,13 @@ const TraitModal = (props) => {
 		}
 		setSmallTools(newSmallTools);
 	};
-	const handleSaveTool = (toolName:string, toolBonus:string, toolAttribute:string, toolMods:number) => {
+	const handleSaveTool = (
+		toolName: string,
+		toolBonus: string,
+		toolAttribute: string,
+		toolMods: number
+	) => {
 		var newTools = [...smallTools];
-		console.log(newTools);
 		newTools.push({
 			id: Guid.create(),
 			name: toolName,
@@ -563,7 +621,9 @@ const TraitModal = (props) => {
 								<div
 									className="icon"
 									style={{ float: "right" }}
-									onClick={() => onSaveTrait()}
+									onClick={() => {
+										onSaveTrait();
+									}}
 								>
 									<FontAwesomeIcon icon={faCheck} />
 								</div>
@@ -572,11 +632,12 @@ const TraitModal = (props) => {
 					</>
 				)
 			) : (
-				<ViewTrait trait={props.trait} 
-				Delete={DeleteTrait}
-				onStartEditing={onStartEditing} 
-				abilityScores={props.abilityScores} 
-				classes={props.classes} 
+				<ViewTrait
+					trait={props.trait}
+					Delete={DeleteTrait}
+					onStartEditing={onStartEditing}
+					abilityScores={props.abilityScores}
+					classes={props.classes}
 				/>
 			)}
 		</div>

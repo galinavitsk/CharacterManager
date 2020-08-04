@@ -15,7 +15,7 @@ import OtherFeatures from "./Features/OtherFeatures";
 import BackgroundFeatures from "./Features/BackgroundFeatures";
 import RaceFeatures from "./Features/RaceFeatures";
 
-import { UpdateTrait } from '../../../../redux/actionCreators';
+import { ModifyTraits } from "../../../../redux/actionCreators";
 
 const mapStateToProps = (state: {
 	race: any;
@@ -32,12 +32,12 @@ const mapStateToProps = (state: {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	updateTrait: (newTraits,category) => dispatch(UpdateTrait(newTraits,category))
+	modifyTraits: (newTraits, category) =>
+		dispatch(ModifyTraits(newTraits, category)),
 });
 
 const FeaturesTrait = (props) => {
 	const [showFeatures, setShowFeatures] = React.useState(false);
-
 	const [showBackgroundFeatures, setShowBackgroundFeatures] = React.useState(
 		true
 	);
@@ -54,8 +54,7 @@ const FeaturesTrait = (props) => {
 		setIsEditing(false);
 		setIsNew(false);
 	};
-	const deleteFeature = (category,trait) => {
-		console.log("Test")
+	const deleteFeature = (category, trait) => {
 		closeTraitModal();
 		switch (category) {
 			case "racial":
@@ -65,8 +64,8 @@ const FeaturesTrait = (props) => {
 						newTraits.splice(index, 1);
 					}
 				}
-				
-		props.updateTrait(newTraits,"racial");
+
+				props.modifyTraits(newTraits, "racial");
 				break;
 			case "background":
 				var newTraits = [...props.background.traits];
@@ -75,7 +74,7 @@ const FeaturesTrait = (props) => {
 						newTraits.splice(index, 1);
 					}
 				}
-				props.updateTrait(newTraits,"background");
+				props.modifyTraits(newTraits, "background");
 				break;
 			case "other":
 				var newTraits = [...props.traits];
@@ -83,31 +82,89 @@ const FeaturesTrait = (props) => {
 					if (newTraits[index].id == trait.id) {
 						newTraits.splice(index, 1);
 					}
-				}props.updateTrait(newTraits,"other");
+				}
+				props.modifyTraits(newTraits, "other");
 				break;
 			default:
 				break;
 		}
 		setFeatureType("");
 		setTrait(null);
-
 	};
 	const addNewTrait = (newTrait: any) => {
 		switch (featureType) {
 			case "racial":
-				props.race.traits.push(newTrait);
+				var newTraits = [...props.race.traits];
+				newTraits.push(newTrait);
+				props.modifyTraits(newTraits, "racial");
 				break;
 			case "background":
-				props.background.traits.push(newTrait);
+				var newTraits = [...props.background.traits];
+				newTraits.push(newTrait);
+				props.modifyTraits(newTraits, "background");
 				break;
 			case "other":
-				props.traits.push(newTrait);
+				var newTraits = [...props.traits];
+				newTraits.push(newTrait);
+				props.modifyTraits(newTraits, "other");
 				break;
 			default:
 				break;
 		}
 		setFeatureType("");
 		closeTraitModal();
+	};
+
+	const editTrait = (newTrait: any, featureType: string) => {
+		console.log(newTrait);
+		switch (featureType) {
+			case "racial":
+				var newTraits = [...props.race.traits];
+				newTraits.map((trait) => {
+					if (trait.id == newTrait.id) {
+						trait.name = newTrait.name;
+						trait.description = newTrait.description;
+						trait.savingThrowsProf = newTrait.savingThrowsProf;
+						trait.modifiers = newTrait.modifiers;
+						trait.smallProf = newTrait.smallProf;
+						trait.smallTools = newTrait.smallTools;
+					}
+				});
+				console.log(newTraits);
+				props.modifyTraits(newTraits, "racial");
+				break;
+			case "background":
+				var newTraits = [...props.background.traits];
+				newTraits.map((trait) => {
+					if (trait.id == newTrait.id) {
+						trait.name = newTrait.name;
+						trait.description = newTrait.description;
+						trait.savingThrowsProf = newTrait.savingThrowsProf;
+						trait.modifiers = newTrait.modifiers;
+						trait.smallProf = newTrait.smallProf;
+						trait.smallTools = newTrait.smallTools;
+					}
+				});
+				props.modifyTraits(newTraits, "background");
+				break;
+			case "other":
+				var newTraits = [...props.traits];
+				newTraits.map((trait) => {
+					if (trait.id == newTrait.id) {
+						trait.name = newTrait.name;
+						trait.description = newTrait.description;
+						trait.savingThrowsProf = newTrait.savingThrowsProf;
+						trait.modifiers = newTrait.modifiers;
+						trait.smallProf = newTrait.smallProf;
+						trait.smallTools = newTrait.smallTools;
+					}
+				});
+				props.modifyTraits(newTraits, "other");
+				break;
+			default:
+				break;
+		}
+		setFeatureType("");
 	};
 
 	return (
@@ -158,7 +215,11 @@ const FeaturesTrait = (props) => {
 							<>
 								{props.race.traits.map(
 									(r: { name: {}; description: React.ReactNode }) => (
-										<RaceFeatures trait={r} deleteTrait={deleteFeature}/>
+										<RaceFeatures
+											trait={r}
+											deleteTrait={deleteFeature}
+											editTrait={editTrait}
+										/>
 									)
 								)}
 								<div
@@ -182,7 +243,9 @@ const FeaturesTrait = (props) => {
 
 						<hr></hr>
 						{props.classes.length >= 1 &&
-							props.classes.map((c: any) => <ClassFeatures c={c} deleteTrait={deleteFeature}/>)}
+							props.classes.map((c: any) => (
+								<ClassFeatures c={c} deleteTrait={deleteFeature} />
+							))}
 
 						<div
 							className="row featureHeader"
@@ -208,7 +271,11 @@ const FeaturesTrait = (props) => {
 							<>
 								{props.background.traits.map(
 									(b: { name: {}; description: React.ReactNode }) => (
-										<BackgroundFeatures trait={b} deleteTrait={deleteFeature}/>
+										<BackgroundFeatures
+											trait={b}
+											deleteTrait={deleteFeature}
+											editTrait={editTrait}
+										/>
 									)
 								)}
 								<div
@@ -255,7 +322,11 @@ const FeaturesTrait = (props) => {
 							<>
 								{props.traits.map(
 									(t: { name: {}; description: React.ReactNode }) => (
-										<OtherFeatures trait={t} deleteTrait={deleteFeature}/>
+										<OtherFeatures
+											trait={t}
+											deleteTrait={deleteFeature}
+											editTrait={editTrait}
+										/>
 									)
 								)}
 								<div

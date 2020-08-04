@@ -6,7 +6,7 @@ import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
 
 import GetProficiency from "../../../../scripts/GetProficiency"
 
-const mapStateToProps = (state: { abilityScores: { [x: string]: any; }; acbonus: any; race: { speed: any; }; proficiency: any; inspiration: any; classes: any; }) => {
+const mapStateToProps = (state) => {
 	return {
 		dexterity: state.abilityScores["Dexterity"],
     wisdom: state.abilityScores["Wisdom"],
@@ -14,7 +14,11 @@ const mapStateToProps = (state: { abilityScores: { [x: string]: any; }; acbonus:
     speed:state.race.speed,
     prof:state.proficiency,
     insp:state.inspiration,
-    classes:state.classes
+    classes:state.classes,
+    race:state.race,
+    background:state.background,
+    traits:state.traits
+
 	};
 };
 
@@ -23,7 +27,7 @@ const mapDispatchToProps = (
 ) => ({
 });
 
-const BasicStatsCard = (props: { AC: number; dexterity: number; speed: React.ReactNode; classes: import("../../../../Data/Class").Class[]; wisdom: number; insp: React.ReactNode; }) => {
+const BasicStatsCard = (props) => {
 	return (
 		<>
 			<div className="card" style={{ textAlign: "center" }}>
@@ -62,7 +66,7 @@ const BasicStatsCard = (props: { AC: number; dexterity: number; speed: React.Rea
             </div>
             <div className="row">
               <div className="col-8 StatCube" style={{textAlign:"left"}}>Proficiency</div>
-              <div className="col-4 StatCube" style={{textAlign:"right"}}>+{GetProficiency(GetCharacterLevel(props.classes))}</div>
+              <div className="col-4 StatCube" style={{textAlign:"right"}}>+{GetProficiency(GetCharacterLevel(props.classes),props.race,props.classes,props.background,props.traits)}</div>
             </div>
             <div className="row">
               <div className="col-8 StatCube" style={{textAlign:"left"}}>Passive Perception</div>

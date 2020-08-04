@@ -114,3 +114,19 @@ hr{
    font-size: 12px;
     margin-bottom:-.7rem;
 }
+
+/*TOASTIFY*/
+/** Used to define container behavior: width, position: fixed etc... **/
+
+.Toastify__toast--default {
+
+    padding: 10px !important;
+    margin: 10px;
+    background: #E9E7E1 !important;
+    box-shadow: 0px 3px 6px #00000029 !important;
+    border: 1px solid #E4BDB4 !important;
+    font-size:14px;
+}
+.Toastify__progress-bar--default {
+    background:#708F93 !important;
+}

@@ -17,8 +17,8 @@ export const UpdateTempHealth = (temp:number) => ({
     id:id,
     payload: newHD,
   })
-  export const UpdateTrait = (newTraits:Trait,category:string) => ({
-    type: types.UPDATE_TRAIT,
+  export const ModifyTraits = (newTraits:Trait,category:string) => ({
+    type: types.MODIFY_TRAITS,
     payload: newTraits,
     location:category
   })
@@ -27,8 +27,13 @@ export const UpdateTempHealth = (temp:number) => ({
     payload: newTraits,
     id:id
   })
-  export const UpdateSubclassTrait = (newTraits:Trait,id:Guid) => ({
+  export const UdateSubclassTrait = (newTraits:Trait,id:Guid) => ({
     type: types.UPDATE_SUBCLASS_TRAIT,
     payload: newTraits,
+    id:id
+  })
+  export const UpdateTrait = (newTrait:Trait,id:Guid) => ({
+    type: types.UPDATE_TRAIT,
+    payload: newTrait,
     id:id
   })

@@ -13,7 +13,7 @@ export interface ViewTraitProps {
 	trait: Trait;
 	onStartEditing: () => void;
 	Delete: () => void;
-	abilityScores: { [x: string]: number; };
+	abilityScores: { [x: string]: number };
 	classes: import("../../../../../Data/Class").Class[];
 }
 
@@ -25,31 +25,31 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 			<>
 				<div className="row">
 					<span style={{ fontSize: "16px" }}>
-						{this.props.trait.description != null && this.props.trait.name}
+						{(this.props.trait!=null && this.props.trait.name != null) && this.props.trait.name}
 					</span>
 				</div>
 				<hr />
 				<div className="row" style={{ fontSize: "12px" }}>
-					{this.props.trait.description != null && this.props.trait.description}
+					{(this.props.trait!=null && this.props.trait.description != null) && this.props.trait.description}
 				</div>
 				<hr />
 
 				<div className="row" style={{ fontSize: "12px" }}>
-					{this.props.trait.savingThrowsProf != null &&
+					{(this.props.trait!=null && this.props.trait.savingThrowsProf != null) &&
 						this.props.trait.savingThrowsProf.map((p) => (
 							<>{p} Saving Throw, </>
 						))}
-					{this.props.trait.skillsProf != null &&
+					{(this.props.trait!=null && this.props.trait.skillsProf != null) &&
 						this.props.trait.skillsProf.map((s) => <>{s}, </>)}
 				</div>
-				{this.props.trait.modifiers != null &&
-					this.props.trait.modifiers.length >= 0 &&
+				{((this.props.trait!=null && this.props.trait.modifiers != null) &&
+					this.props.trait.modifiers.length >= 0) &&
 					this.props.trait.modifiers.map((m) => (
 						<>
 							<hr />
 							<div className="row" style={{ fontSize: "12px" }}>
-								{m.name != null && m.name}
-								{m.name == null && (
+								{(m.name != null || m.name!="")&& m.name}
+								{(m.name == null  || m.name=="") && (
 									<>
 										{m.type} {m.value}
 									</>
@@ -57,9 +57,9 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 							</div>
 						</>
 					))}
-				{this.props.trait.smallProf != null && <hr />}
-				{this.props.trait.smallProf != null &&
-					this.props.trait.smallProf.length >= 0 &&
+				{(this.props.trait!=null && this.props.trait.smallProf != null) && <hr />}
+				{((this.props.trait!=null && this.props.trait.smallProf != null) &&
+					this.props.trait.smallProf.length >= 0 )&&
 					this.props.trait.smallProf.map((p) => (
 						<>
 							<div className="row" style={{ fontSize: "12px" }}>
@@ -70,8 +70,8 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 					))}
 
 				<hr />
-				{this.props.trait.smallTools != null &&
-					this.props.trait.smallTools.length >= 0 &&
+				{((this.props.trait!=null && this.props.trait.smallTools != null) &&
+					this.props.trait.smallTools.length >= 0) &&
 					this.props.trait.smallTools.map((t) => (
 						<>
 							<div className="row" style={{ fontSize: "12px" }}>
@@ -79,7 +79,6 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 								<div className="col-3 StatCubesmall">
 									{
 										<>
-										
 											{t.attribute == "Query" && <>?</>}
 											{t.bonus == "Proficient" &&
 												t.attribute != "Query" &&
@@ -94,10 +93,11 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 														GetCharacterLevel(this.props.classes)
 													) +
 													GetProficiency(GetCharacterLevel(this.props.classes))}
-													{t.bonus == "Jack of All Trades" &&
+											{t.bonus == "Jack of All Trades" &&
 												t.attribute != "Query" &&
 												t.mods +
-													GetAbilityMod(this.props.abilityScores[t.attribute]) +1}
+													GetAbilityMod(this.props.abilityScores[t.attribute]) +
+													1}
 										</>
 									}
 								</div>
@@ -105,24 +105,27 @@ class ViewTrait extends React.Component<ViewTraitProps, ViewTraitState> {
 							</div>
 						</>
 					))}
-				<div className="row" >
-				<div className="col-6" style={{ float: "left" }}>
-					<div
-						className="icon"
-						onClick={() => {this.props.Delete();}}
-					>
-						<FontAwesomeIcon icon={faTrash} />
-					</div>
+				<div className="row">
+					<div className="col-6" style={{ float: "left" }}>
+						<div
+							className="icon"
+							onClick={() => {
+								this.props.Delete();
+							}}
+						>
+							<FontAwesomeIcon icon={faTrash} />
+						</div>
 					</div>
 					<div className="col-6">
-					<div
-						className="icon" style={{ float: "right" }}
-						onClick={() => {
-							this.props.onStartEditing();
-						}}
-					>
-						<FontAwesomeIcon icon={faCog} />
-					</div>
+						<div
+							className="icon"
+							style={{ float: "right" }}
+							onClick={() => {
+								this.props.onStartEditing();
+							}}
+						>
+							<FontAwesomeIcon icon={faCog} />
+						</div>
 					</div>
 				</div>
 			</>

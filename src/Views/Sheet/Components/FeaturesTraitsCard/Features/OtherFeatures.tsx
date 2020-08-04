@@ -24,6 +24,10 @@ const OtherFeatures = (props) => {
 		setTrait(t);
 		setIsOpen(true);
 	};
+	const modifyTrait=(newTrait)=>{
+		console.log(newTrait);
+		props.editTrait(newTrait,"other");
+	}
 	return (
 		<>
 			{expanded ? (
@@ -82,7 +86,7 @@ const OtherFeatures = (props) => {
 				centered
 			>
 				<Modal.Body bsPrefix="modalContentCard">
-					<TraitModal trait={trait} deleteTrait={()=>{setIsOpen(false);
+					<TraitModal trait={trait} onEditTrait={modifyTrait}  deleteTrait={()=>{setIsOpen(false);
 					setExpanded(false);
 						props.deleteTrait("other",trait)}}/>
 				</Modal.Body>

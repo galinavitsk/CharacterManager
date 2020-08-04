@@ -38,7 +38,8 @@ const mapStateToProps = state => {
             CH=props.maxHealth;
         }
         props.updateCurrentHealth(CH);
-        props.updateCurrentHitDice(props.classId,props.CHD-1);
+        if(rolled>0){
+        props.updateCurrentHitDice(props.classId,props.CHD-1);}
         props.onHClose();
     }
             return(<>
