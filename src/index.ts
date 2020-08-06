@@ -20,10 +20,10 @@ const createWindow = () => {
     }
   });
   var Datastore = require('nedb')
-  , db = new Datastore({ filename: 'Compendium.db' });
-db.loadDatabase(function (err) {    // Callback is optional
-  
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
+  , compendium = new Datastore({ filename: 'Compendium.db' }), characters=new Datastore({filename:'Characters.db'});
+  compendium.loadDatabase(function (err) {    // Callback is optional
+  characters.loadDatabase(function(err)){
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)}
 });
 
   // Open the DevTools.

@@ -24,7 +24,12 @@ module.exports = [
       }
     }
   },{
-  test: /\.(png|jp(e*)g|svg|gif)$/,
+    test: /\.(jpg|jpeg|png)$/,
+    use: {
+     loader: 'url-loader'
+    }
+   },{
+  test: /\.(svg|gif)$/,
         use: [
           {
             loader: 'file-loader',
@@ -34,5 +39,6 @@ module.exports = [
           },
         ]
       }
+      
       
 ];

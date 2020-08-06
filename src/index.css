@@ -130,3 +130,9 @@ hr{
 .Toastify__progress-bar--default {
     background:#708F93 !important;
 }
+
+
+label.form-label{
+    font-size:12px;
+    margin-bottom:.2rem;
+}

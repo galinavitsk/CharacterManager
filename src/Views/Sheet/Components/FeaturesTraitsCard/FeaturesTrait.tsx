@@ -33,7 +33,7 @@ const mapStateToProps = (state: {
 
 const mapDispatchToProps = (dispatch) => ({
 	modifyTraits: (newTraits, category) =>
-		dispatch(ModifyTraits(newTraits, category)),
+		dispatch(UpdateCharacter(ModifyTraits(newTraits, category))),
 });
 
 const FeaturesTrait = (props) => {

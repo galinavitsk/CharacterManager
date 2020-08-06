@@ -4,22 +4,17 @@ import TopNavBar from './Views/Shared/TopNavBar';
 import SideBar from './Views/Shared/Sidebar';
 import Sheet from './Views/Sheet/index'
 import Spells from './Views/Spells/index'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import {Character} from './Data/Character';
 import { connect } from 'react-redux';
 import { UpdateCurrentHitDice } from './redux/actionCreators';
 
 const mapStateToProps = state => {
   return {
-    currentHealth:state.currentHealth,
-    maxHealth:state.maxHealth,
-    classes:state.classes,
-    tempHealth:state.tempHealth
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  updateCurrentHitDice: (iD,payload) => dispatch(UpdateCurrentHitDice(iD,payload))
 })
 
 const App =(props)=>{

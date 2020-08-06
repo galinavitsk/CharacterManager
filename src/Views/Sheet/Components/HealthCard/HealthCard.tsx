@@ -5,27 +5,23 @@ import Modal from "react-bootstrap/Modal";
 import PointsCalculator from "./PointsCalculator";
 import HitDiceRoller from "./HitDiceRoller";
 import { connect } from "react-redux";
-import { UpdateCurrentHealth } from "../../../../redux/actionCreators";
+import GetCharacterLevel from "../../../../scripts/GetCharacterLevel";
+import GetProficiency from "../../../../scripts/GetProficiency"
 
-const mapStateToProps = (state: {
-	currentHealth: any;
-	maxHealth: any;
-	classes: any;
-	tempHealth: any;
-}) => {
+const mapStateToProps = (state) => {
 	return {
 		currentHealth: state.currentHealth,
 		maxHealth: state.maxHealth,
 		classes: state.classes,
 		tempHealth: state.tempHealth,
+		race:state.race,
+		background:state.background,
+		traits:state.traits
 	};
 };
 
 const mapDispatchToProps = (
-	dispatch: (arg0: { type: string; payload: number }) => any
-) => ({
-	updateCurrentHealth: (payload: number) =>
-		dispatch(UpdateCurrentHealth(payload)),
+	dispatch) => ({
 });
 
 function GetLabelHealth(ch: number, mh: number, temp: number) {
@@ -41,12 +37,7 @@ function GetLabelHitDice(currentHD: number, HD: number) {
 	return label;
 }
 
-const HealthCard = (props: {
-	currentHealth: number;
-	maxHealth: number;
-	tempHealth: number;
-	classes: any[];
-}) => {
+const HealthCard = (props) => {
 	const [isOpenP, setIsOpenP] = useState(false);
 	const [isOpenH, setIsOpenH] = useState(false);
 	const [classId, setClassId] = useState();
@@ -66,7 +57,76 @@ const HealthCard = (props: {
 	const onHClose = () => {
 		setIsOpenH(false);
 	};
+	const GetTotalHealth=()=>{
+		
+		var values = { currentScore: props.maxHealth, ProfAdded: false };
+		if (props.race != null) {
+			values=GetModifiers(props.race,values);
+			if (props.race.traits != null) {
+				props.race.traits.forEach((trait) => {
+					values = GetModifiers(trait, values);
+				});
+			}
+		}
+		if (props.classes != null) {
+			props.classes.forEach((c) => {
+				if (c.traits != null) {
+					c.traits.forEach((trait) => {
+						values = GetModifiers(trait, values);
+					});
+				}
+				if (c.subclass != null && c.subclass.traits != null) {
+					c.subclass.traits.forEach((trait) => {
+						values = GetModifiers(trait, values);
+					});
+				}
+			});
+		}
+		if (props.background != null) {
+			if (props.background.traits != null) {
+				props.background.traits.forEach((trait) => {
+					values == GetModifiers(trait, values);
+				});
+			}
+		}
+		if (props.traits != null) {
+			props.traits.forEach((trait) => {
+				values == GetModifiers(trait, values);
+			});
+		}
+		return values.currentScore;
+	}
 
+	const GetModifiers = (trait, values) => {
+		if (trait.modifiers != null) {
+			trait.modifiers.forEach((modifier) => {
+				if (modifier.category == "Bonus") {
+					if(modifier.type=="Hit Points"){
+						if (modifier.value == "+Proficiency Bonus") {
+							if (values.ProfAdded == false) {
+								values.currentScore += GetProficiency(
+									GetCharacterLevel(props.classes),
+									props.race,
+									props.classes,
+									props.background,
+									props.traits
+								);
+								values.ProfAdded = true;
+							}
+						} else if (modifier.value.includes("+")) {
+							values.currentScore += parseInt(
+								modifier.value.toString().substr(1)
+							);
+						} else if (modifier.value.includes("-")) {
+							values.currentScore -= parseInt(
+								modifier.value.toString().substr(1)
+							);
+						}}
+				}
+			});
+		}
+		return values;
+	};
 	return (
 		<>
 			<div className="card" style={{ textAlign: "center" }}>
@@ -80,10 +140,10 @@ const HealthCard = (props: {
 					<StatusBar
 						bColor="#9DBE9E"
 						fColor="#BAE6BC"
-						value={(props.currentHealth / props.maxHealth) * 100}
+						value={(props.currentHealth / (GetTotalHealth())) * 100}
 						label={GetLabelHealth(
 							props.currentHealth,
-							props.maxHealth,
+							GetTotalHealth(),
 							props.tempHealth
 						)}
 					/>

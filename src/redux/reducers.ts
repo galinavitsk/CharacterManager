@@ -1,25 +1,24 @@
 import { Character } from "../Data/Character";
-import { Race } from "../Data/Race";
 import * as types from "./types";
 import { Guid } from "guid-typescript";
 // Initial (starting) state
 
-export const Naomi: Character = {
+export const Naomi: Character =null;
+
+/*  {
 	id: Guid.create(),
 	name: "Naomi",
 	race: {
 		id: Guid.create(),
 		name: "Fallen Aassimar",
-
-		abilityScores: {
-			["Strength"]: 2,
-			["Dexterity"]: 3,
-			["Constitution"]: -4,
-			["Intelligence"]: 1,
-			["Wisdom"]: 1,
-			["Charisma"]: 0,
-		},
 		size: "medium",
+		modifiers:[{
+			id:Guid.create(),
+			name:"",
+			category:"Ability Score",
+			type:"Strength",
+			value:"+4"
+		}],
 		speed: 30,
 		traits: [
 			{
@@ -228,7 +227,6 @@ export const Naomi: Character = {
 		["Wisdom"]: 20,
 		["Charisma"]: 20,
 	},
-	acbonus: 0,
 	maxHealth: 120,
 	currentHealth: 100,
 	tempHealth: 10,
@@ -357,14 +355,16 @@ export const Naomi: Character = {
 			mods: 0,
 		},
 	],
-};
+};  */
 
 // Our root reducer starts with the initial state
 // and must return a representation of the next state
 export const rootReducer = (state = Naomi, action) => {
 	switch (action.type) {
+		case types.LOAD_CHARACTER:
+			return {...action.payload}
 		case types.UPDATE_CURRENT_HEALTH:
-			return { ...state, currentHealth: action.payload };
+			return { ...state, currentHealth: action.payload};
 		case types.UPDATE_TEMP_HEALTH:
 			return { ...state, tempHealth: action.payload };
 		case types.UPDATE_CLASS_CURRENT_HIT_DICE:
@@ -444,6 +444,9 @@ export const rootReducer = (state = Naomi, action) => {
 					}
 				}),
 			};
+			case types.UPDATE_INSPIRATION:
+				return {...state,inspiration:action.payload};
+			
 
 		default:
 			return state;

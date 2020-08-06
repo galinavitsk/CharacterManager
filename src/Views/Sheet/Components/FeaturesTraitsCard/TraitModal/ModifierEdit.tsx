@@ -1,12 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
 import {
-	faCog,
-	faCheck,
 	faTimes,
-	faMinusCircle,
-	faPlusCircle,
-	faEdit,
 	faSave,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -119,7 +114,7 @@ class ModifierEdit extends React.Component<
 								htmlSize={5}
 								onChange={this.props.handleModifierValueChange.bind(this)}
 							>
-								{GetModifierValues(this.props.modifierCategory).map((v) => (
+								{GetModifierValues(this.props.modifierCategory,this.props.modifierType).map((v) => (
 									<option>{v}</option>
 								))}
 							</Form.Control>

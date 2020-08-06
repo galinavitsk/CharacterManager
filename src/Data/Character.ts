@@ -14,7 +14,6 @@ import { SmallTools } from './SmallTools';
     classes: Class[];
     background:Background;
     abilityScores: { [key: string]: number; };
-    acbonus:number;
     maxHealth: number;
     currentHealth: number;
     tempHealth: number;

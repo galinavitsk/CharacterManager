@@ -11,26 +11,33 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-export interface SideBarProps {}
+import {SaveCharacter} from "../../scripts/CharacterManipulation";
+import { connect } from "react-redux";
 
-export interface SideBarState {}
+const mapStateToProps = state => {
+    if(state!=null){
+    return {
+        character:state
+    };};
+    return{};
+  };
+  
+  const mapDispatchToProps = dispatch => ({
+    updateCurrentHitDice: (id,payload) => dispatch(UpdateCurrentHitDice(id,payload))
+  })
+const SideBar =(props)=>{
 
-class SideBar extends React.Component<SideBarProps, SideBarState> {
-	constructor(props) {
-		super(props);
-		this.openFileDialog = this.openFileDialog.bind(this);
-	}
-	fileListToArray(list) {
+	const fileListToArray=(list) =>{
 		const array = [];
 		for (var i = 0; i < list.length; i++) {
 			array.push(list.item(i));
 		}
 		return array;
 	}
-	openFileDialog() {
+	const openFileDialog=()=> {
 		document.getElementById("FileInput").click();
     }
-    showFile = async (e) => {
+    const showFile = async (e) => {
         e.preventDefault()
         const reader = new FileReader()
         reader.onload = async (e) => { 
@@ -38,11 +45,11 @@ class SideBar extends React.Component<SideBarProps, SideBarState> {
           LoadCompendium(text);
         };
         reader.readAsText(e.target.files[0]);
-      }
-    
-	render() {
+	
+	}
 		return (
 			<div className="sidebar-nav">
+				{props.character!=null?(
 				<ul>
 					<li className="nav-item">
 						<Link to="/sheet">Sheet</Link>
@@ -56,13 +63,12 @@ class SideBar extends React.Component<SideBarProps, SideBarState> {
 					<li className="nav-item">
 						<Link to="/">Lore</Link>
 					</li>
-				</ul>
+				</ul>):null}
 				<ul style={{ marginTop: "auto", marginBottom: "50px" }}>
 					<li>
 						<div
 							className="sidebarlink"
-							onClick={() => {
-								this.openFileDialog();
+							onClick={() => {openFileDialog.bind(this);
 							}}
 						>
 							<input
@@ -70,16 +76,22 @@ class SideBar extends React.Component<SideBarProps, SideBarState> {
 								className="FileInput"
 								type="file"
 								hidden
-								onChange={(e)=>this.showFile(e)}
+								onChange={(e)=>showFile(e)}
 							/>
 							<FontAwesomeIcon icon={faFileDownload} /> Import Compendium
 						</div>
 					</li>
+					{props.character!=null ?(
 					<li>
-						<a href="">
+						<div
+							className="sidebarlink"
+							onClick={() => {
+								SaveCharacter(props.character);
+							}}
+						>
 							<FontAwesomeIcon icon={faUpload} /> Save Character
-						</a>
-					</li>
+						</div>
+					</li>):null}
 					<li>
 						<a href="">
 							<FontAwesomeIcon icon={faDownload} /> Load Character
@@ -88,7 +100,6 @@ class SideBar extends React.Component<SideBarProps, SideBarState> {
 				</ul>
 			</div>
 		);
-	}
 }
 
-export default SideBar;
+export default connect(mapStateToProps,mapDispatchToProps)(SideBar);

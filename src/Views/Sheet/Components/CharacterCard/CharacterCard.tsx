@@ -20,7 +20,7 @@ import GetCharacterLevel from "../../../../scripts/GetCharacterLevel"
     return(<div className="card">
         <div className="row">
             <div id="characterAvatar">
-                <img style={{border:"1px solid #00000029"}} width="100" height="100" src='../../../../Resources/Letter2.jpg' />
+                <img style={{border:"1px solid #00000029"}} width="100" height="100" src={require('../../../../Resources/Letter2.jpg')} />
             </div>
             <div id="characterInformation">
                 <div id="characterName">{props.name} </div>

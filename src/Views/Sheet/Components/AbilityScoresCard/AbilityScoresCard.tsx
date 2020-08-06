@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import GetAbilityMod from "../../../../scripts/GetAbilityMod";
 import GetCharacterLevel from "../../../../scripts/GetCharacterLevel";
 import GetProficiency from "../../../../scripts/GetProficiency";
-import DiceRoll from "./DiceRoll";
 import { Guid } from "guid-typescript";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -27,7 +26,7 @@ const AbilityScoresCard = (props) => {
 		var values = { currentScore: 0, ProfAdded: false };
 		values.currentScore = props.abilityScores[ability];
 		if (props.race != null) {
-			values.currentScore += props.race.abilityScores[ability];
+			values=GetModifiers(props.race,values,ability,"score");
 			if (props.race.traits != null) {
 				props.race.traits.forEach((trait) => {
 					values = GetModifiers(trait, values, ability, "score");
@@ -68,6 +67,7 @@ const AbilityScoresCard = (props) => {
 		var values = { currentScore: 0, ProfAdded: false };
 		values.currentScore = GetAbilityMod(props.abilityScores[ability]);
 		if (props.race != null) {
+			values=GetModifiers(props.race,values,ability,"mod");
 			if (props.race.traits != null) {
 				props.race.traits.forEach((trait) => {
 					values = GetModifiers(trait, values, ability, "mod");
@@ -108,6 +108,7 @@ const AbilityScoresCard = (props) => {
 		var values = { currentScore: 0, ProfAdded: false };
 		values.currentScore = GetAbilityMod(props.abilityScores[ability]);
 		if (props.race != null) {
+			values=GetModifiers(props.race,values,ability,"save");
 			if (props.race.traits != null) {
 				props.race.traits.forEach((trait) => {
 					values = GetModifiers(trait, values, ability, "save");
@@ -242,15 +243,6 @@ draggable: true,
 progress: undefined
 			}));
 	};
-const onToastClose = (roll) => {
-	console.log(roll);
-	var newRolls = [...rolls];
-	for (let index = 0; index < newRolls.length; index++) {
-		if (newRolls[index].id == roll.id) {
-			newRolls.splice(index, 1);
-		}
-	}
-};
 	return (
 		<>
 			

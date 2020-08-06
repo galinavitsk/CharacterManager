@@ -25,6 +25,17 @@ export function GetModifierType(category: string) {
 				"Weapon Damage",
 				"Melee Attacks",
 				"Melee Damage",
+				"Ranged Attacks",
+				"Ranged Damage",
+				"Spell Attack",
+				"Spell DC",
+				"Hit Points",
+				"Armor Class",
+				"Saving Throws",
+				"Initiative",
+				"Speed",
+				"Passive Preception"
+
 			];
 		case "Ability Score":
 			return [
@@ -79,12 +90,13 @@ export function GetModifierType(category: string) {
 	return null;
 }
 
-export function GetModifierValues(category) {
+export function GetModifierValues(category,type) {
 	var values: string[] = [];
 	for (let index = 100; index > 0; index--) {
 		values.push("-" + index.toString());
 	}
-	values.push("+Proficiency Bonus");
+	if(type!="Proficiency Bonus"){
+	values.push("+Proficiency Bonus");}
 	if (category == "Skill") {
 		values.push("Expertise");
 	}

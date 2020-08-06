@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Equal from '../../../../scripts/SolveDiceEqualtion'
 import './Calc.css'
 import { connect } from "react-redux";
-import { UpdateCurrentHealth, UpdateTempHealth } from '../../../../redux/actionCreators';
+import { UpdateCurrentHealth, UpdateTempHealth, UpdateCharacter } from '../../../../redux/actionCreators';
  
 
 const mapStateToProps = state => {
@@ -19,8 +19,8 @@ const mapStateToProps = state => {
   };
 
   const mapDispatchToProps = dispatch => ({
-    updateCurrentHealth: (payload) => dispatch(UpdateCurrentHealth(payload)),
-    updateTempHealth: (payload)=> dispatch(UpdateTempHealth(payload))
+    updateCurrentHealth: (payload) => dispatch(UpdateCharacter(UpdateCurrentHealth(payload))),
+    updateTempHealth: (payload)=> dispatch(UpdateCharacter(UpdateTempHealth(payload)))
   })
 
 

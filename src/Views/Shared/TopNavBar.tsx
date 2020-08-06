@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import { UpdateCurrentHitDice } from '../../redux/actionCreators';
  
 const mapStateToProps = state => {
+    if(state!=null){
     return {
         classes:state.classes
-    };
+    };};
+    return{};
   };
   
   const mapDispatchToProps = dispatch => ({
