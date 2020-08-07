@@ -30,7 +30,7 @@ export const UpdateClassTrait = (newTraits: Trait, id: Guid) => ({
 	payload: newTraits,
 	id: id,
 });
-export const UdateSubclassTrait = (newTraits: Trait, id: Guid) => ({
+export const UpdateSubclassTrait = (newTraits: Trait, id: Guid) => ({
 	type: types.UPDATE_SUBCLASS_TRAIT,
 	payload: newTraits,
 	id: id,
@@ -44,14 +44,6 @@ export const UpdateInspiration = (newInspiration: number) => ({
 	type: types.UPDATE_INSPIRATION,
 	payload: newInspiration,
 });
-
-export function errorAfterFiveSeconds() {
-	``;
-	// We return a function instead of an action object
-	return (dispatch) => {
-		console.log("TESTACTION");
-	};
-}
 export function UpdateCharacter(action) {
 	return (dispatch,getState) => {
 		dispatch(action);

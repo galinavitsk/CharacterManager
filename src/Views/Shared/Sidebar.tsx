@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Component } from "react";
 import "./sidebar.css";
-import LoadCompendium from "../../scripts/LoadCompendium";
+import ImportCompendium from "../../scripts/ImportCompendium";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,7 +23,6 @@ const mapStateToProps = state => {
   };
   
   const mapDispatchToProps = dispatch => ({
-    updateCurrentHitDice: (id,payload) => dispatch(UpdateCurrentHitDice(id,payload))
   })
 const SideBar =(props)=>{
 
@@ -42,7 +41,7 @@ const SideBar =(props)=>{
         const reader = new FileReader()
         reader.onload = async (e) => { 
           const text = (e.target.result)
-          LoadCompendium(text);
+          ImportCompendium(text);
         };
         reader.readAsText(e.target.files[0]);
 	

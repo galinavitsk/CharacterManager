@@ -6,6 +6,7 @@ export interface Race {
     //Score Imporvements
     id:Guid;
     name:string;
+    description:string;
     modifiers:Modifier[];
     size:string;
     speed:number;

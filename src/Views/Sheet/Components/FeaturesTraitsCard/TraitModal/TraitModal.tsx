@@ -26,10 +26,13 @@ import SmallTools from "./SmallTools";
 import SmallToolsAdd from "./SmallToolsAdd";
 
 const mapStateToProps = (state: { abilityScores: any; classes: any }) => {
+	if(state!=null){
 	return {
+		
 		abilityScores: state.abilityScores,
 		classes: state.classes,
 	};
+}
 };
 
 const mapDispatchToProps = (dispatch: any) => ({});
@@ -285,7 +288,7 @@ const TraitModal = (props) => {
 			setModifierName("");
 			setModifierCategory("Bonus");
 			setModifierType("Proficiency Bonus");
-			setModifierValue("+Proficiency Bonus");
+			setModifierValue("+0");
 		}
 		setIsModifierEdit(true);
 	};

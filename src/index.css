@@ -112,7 +112,6 @@ hr{
     border: 1px solid #EAA69A;
     color: #708F93;
    font-size: 12px;
-    margin-bottom:-.7rem;
 }
 
 /*TOASTIFY*/
@@ -136,3 +135,37 @@ label.form-label{
     font-size:12px;
     margin-bottom:.2rem;
 }
+.verticalDivider{
+    width:1px;
+    background:#708F93;
+}
+.rdw-editor-wrapper {
+    border: 1px solid #E4BDB4;
+ }
+ .rdw-option-wrapper{
+     background:transparent !important;
+     border:none!important;
+ }
+ .rdw-option-wrapper:hover{
+     border:1px solid  #E4BDB4 !important;
+ }
+
+.rdw-editor-toolbar{
+    background:#E9E7E1 !important;
+    border:none !important;
+}
+.rdw-editor-main{
+    padding:10px !important;
+    background:#EDEBE7;
+}
+.rdw-fontfamily-wrapper,
+.rdw-fontsize-wrapper,
+.rdw-block-wrapper,
+.rdw-image-wrapper,
+.rdw-embedded-wrapper,
+.rdw-emoji-wrapper,
+.rdw-remove-wrapper,
+.rdw-link-wrapper,
+.rdw-colorpicker-wrapper
+
+{display:none!important;}

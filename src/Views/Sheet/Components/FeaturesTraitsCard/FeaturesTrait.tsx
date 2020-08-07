@@ -15,7 +15,7 @@ import OtherFeatures from "./Features/OtherFeatures";
 import BackgroundFeatures from "./Features/BackgroundFeatures";
 import RaceFeatures from "./Features/RaceFeatures";
 
-import { ModifyTraits } from "../../../../redux/actionCreators";
+import { ModifyTraits, UpdateCharacter } from "../../../../redux/actionCreators";
 
 const mapStateToProps = (state: {
 	race: any;

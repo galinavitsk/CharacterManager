@@ -13,7 +13,7 @@ import TraitModal from "../TraitModal/TraitModal";
 import SubclassFeatures from "./SubclassFeatures";
 import SingleClassFeature from "./SingleClassFeature";
 
-import {UpdateSubclassTrait, UpdateClassTrait } from '../../../../../redux/actionCreators';
+import {UpdateSubclassTrait, UpdateClassTrait, UpdateCharacter } from '../../../../../redux/actionCreators';
 
 
 const mapStateToProps = (state: any) => {
@@ -21,8 +21,8 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-	updateClassTrait: (newTraits,id) => dispatch(UpdateClassTrait(newTraits,id)),
-	updateSubclassTrait: (newTraits,id) => dispatch(UpdateSubclassTrait(newTraits,id))
+	updateClassTrait: (newTraits,id) => dispatch(UpdateCharacter(UpdateClassTrait(newTraits,id))),
+	updateSubclassTrait: (newTraits,id) => dispatch(UpdateCharacter(UpdateSubclassTrait(newTraits,id)))
 
 });
 

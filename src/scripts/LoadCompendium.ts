@@ -1,18 +1,16 @@
-import X2JS from 'x2js'
-import { app } from 'electron';
+import { Race } from "../Data/Race";
 
-function LoadCompendium(xml){
-var x2js = new X2JS();
-var document = x2js.xml2js(xml);
-
-var Datastore = require('nedb')
-, db = new Datastore({ filename: 'Compendium.db' });
-//console.log(document);
-db.loadDatabase();
-db.remove({}, { multi: true }, function (err, numRemoved) {
-});
-db.insert(document);
-db.find({}, function (err, docs)
-{ console.log(docs[0].compendium.item.filter(item=>{return item.ac>=0 }) ) });
+export function LoadRaces(callback) {
+	var returnRaces: Race[] = [];
+	var Datastore = require("nedb"),
+		races = new Datastore({ filename: "Compendium.db" });
+		races.loadDatabase();
+		races.find({size:{$exists:true}}, function (err, docs) {
+			console.log(docs);
+		docs.map((c) => {
+			
+			returnRaces.push(c);
+			callback(returnRaces);
+		});
+	});
 }
-export default LoadCompendium;

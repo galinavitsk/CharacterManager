@@ -28,10 +28,10 @@ const SmallToolsAdd = (props: { handleSaveTool: (arg0: string, arg1: string, arg
 
 	const handleSaveTool = () => {
         props.handleSaveTool(toolName,toolBonus,toolAttribute,parseInt(toolMods.toString()));
-        setToolName(null);
-        setToolBonus(null);
-        setToolAttribute(null);
-        setToolMods(null);
+        setToolName("");
+        setToolBonus("Proficient");
+        setToolAttribute("Strength");
+        setToolMods(0);
 
 	};
 	const handleNameChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
