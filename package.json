@@ -100,7 +100,7 @@
     "electron-json-storage": "^4.2.0",
     "electron-squirrel-startup": "^1.0.0",
     "guid-typescript": "^1.0.9",
-    "mathjs": "^7.1.0",
+    "mathjs": "^7.5.1",
     "nedb": "^1.8.0",
     "nedb-promises": "^4.0.4",
     "postinstall": "^0.7.0",
