@@ -1,0 +1,8 @@
+backlog:
+  unlabel:
+    - 'in progress'
+    - 'merged'
+'in progress':
+  unlabel:
+    - 'backlog'
+    - 'merged'
